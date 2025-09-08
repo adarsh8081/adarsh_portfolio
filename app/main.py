@@ -139,9 +139,11 @@ try:
     
     # Load portfolio data and create embeddings
     portfolio_data = load_portfolio_data()
+    logger.info(f"Loaded {len(portfolio_data)} portfolio items from database")
 except Exception as e:
     logger.error(f"Error importing database manager: {e}")
     portfolio_data = []
+    logger.info("Using fallback mode without database")
 
 # Initialize embeddings and index
 embeddings = None
@@ -363,16 +365,29 @@ def generate_fallback_response(question: str, context: List[str]) -> str:
     return "I can help with questions about my projects, skills, services, and achievements. Feel free to ask about my web development work, AI/ML projects, or any other aspects of my portfolio!"
 
 # API Endpoints
+@app.get("/")
+def root():
+    return {"message": "Portfolio API is running", "status": "ok"}
+
 @app.get("/health")
 def health():
-    return {
-        "ok": True,
-        "ml_available": ML_AVAILABLE,
-        "llm_available": USE_OPENAI or (LLM_AVAILABLE and llm_pipeline is not None),
-        "tts_available": TTS_AVAILABLE and tts_engine is not None,
-        "portfolio_items": len(portfolio_data),
-        "mode": "full" if ML_AVAILABLE else "fallback"
-    }
+    try:
+        return {
+            "ok": True,
+            "ml_available": ML_AVAILABLE,
+            "llm_available": USE_OPENAI or (LLM_AVAILABLE and llm_pipeline is not None),
+            "tts_available": TTS_AVAILABLE and tts_engine is not None,
+            "portfolio_items": len(portfolio_data),
+            "mode": "full" if ML_AVAILABLE else "fallback",
+            "status": "healthy"
+        }
+    except Exception as e:
+        logger.error(f"Health check error: {e}")
+        return {
+            "ok": False,
+            "error": str(e),
+            "status": "unhealthy"
+        }
 
 @app.post("/search", response_model=List[SearchResult])
 def search(req: SearchRequest):
@@ -526,4 +541,8 @@ def get_stats():
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
+    print(f"Starting server on port {port}")
+    print(f"ML Available: {ML_AVAILABLE}")
+    print(f"LLM Available: {LLM_AVAILABLE}")
+    print(f"TTS Available: {TTS_AVAILABLE}")
     uvicorn.run(app, host="0.0.0.0", port=port)
