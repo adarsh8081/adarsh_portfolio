@@ -50,6 +50,15 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Portfolio RAG Chatbot API")
 
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Portfolio API starting up...")
+    logger.info(f"ML Available: {ML_AVAILABLE}")
+    logger.info(f"LLM Available: {LLM_AVAILABLE}")
+    logger.info(f"TTS Available: {TTS_AVAILABLE}")
+    logger.info(f"Portfolio items: {len(portfolio_data)}")
+    logger.info("Portfolio API startup complete!")
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -541,8 +550,15 @@ def get_stats():
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
+    print(f"Environment PORT: {os.getenv('PORT')}")
     print(f"Starting server on port {port}")
     print(f"ML Available: {ML_AVAILABLE}")
     print(f"LLM Available: {LLM_AVAILABLE}")
     print(f"TTS Available: {TTS_AVAILABLE}")
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    print(f"Portfolio items loaded: {len(portfolio_data)}")
+    print("Starting uvicorn server...")
+    try:
+        uvicorn.run(app, host="0.0.0.0", port=port, log_level="info", access_log=True)
+    except Exception as e:
+        print(f"Failed to start server: {e}")
+        raise
