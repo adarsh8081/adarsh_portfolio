@@ -1,17 +1,24 @@
-# Use Python 3.11 slim
-FROM python:3.11-slim
+# Use Python 3.11 full image for better compatibility
+FROM python:3.11
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install system dependencies required for ML libraries
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     gcc \
     g++ \
+    gfortran \
+    libopenblas-dev \
+    liblapack-dev \
+    libhdf5-dev \
+    pkg-config \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
-COPY python/requirements.txt .
+COPY requirements-minimal.txt requirements.txt
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
