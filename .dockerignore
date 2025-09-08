@@ -1,0 +1,23 @@
+# Ignore Node.js files
+server/
+web/
+node_modules/
+yarn.lock
+package-lock.json
+
+# Ignore Python virtual environment
+python/venv/
+python/Lib/
+python/Scripts/
+python/share/
+python/__pycache__/
+
+# Ignore other unnecessary files
+.git/
+.gitignore
+README.md
+*.md
+
+# Ignore test files
+python/test_*.py
+python/*_test.py
