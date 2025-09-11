@@ -9,32 +9,32 @@ RUN apk add --no-cache libc6-compat
 
 # Copy package files
 COPY package.json ./
-COPY web/package.json web/package-lock.json* ./web/
+COPY server/package.json server/package-lock.json* ./server/
 
 # Install dependencies
 RUN npm install
-RUN cd web && npm install
+RUN cd server && npm install
 
-# Copy source code
-COPY . .
+# Copy server source code
+COPY server/ ./server/
 
-# Build the application
+# Generate Prisma client and build the application
+RUN cd server && npm run prisma:generate
 RUN npm run build
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+RUN adduser -S apiuser -u 1001
 
 # Change ownership of the app directory
-RUN chown -R nextjs:nodejs /app
+RUN chown -R apiuser:nodejs /app
 
-USER nextjs
+USER apiuser
 
-# Expose port
-EXPOSE 3000
+# Expose port (Railway will set this via environment variable)
+EXPOSE 4000
 
 ENV NODE_ENV=production
-ENV PORT=3000
 
-# Start the application
+# Start the Express API server
 CMD ["npm", "start"]

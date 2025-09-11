@@ -1,13 +1,14 @@
 {
   "name": "myportfolio",
   "version": "1.0.0",
-  "description": "React/Next.js Portfolio",
+  "description": "Full-stack Portfolio with Express API and Next.js Frontend",
   "scripts": {
-    "install": "cd web && npm install",
-    "build": "cd web && npm run build",
-    "start": "cd web && npm start",
-    "dev": "cd web && npm run dev",
-    "lint": "cd web && npm run lint"
+    "install": "cd server && npm install",
+    "build": "cd server && npm run build",
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "build:frontend": "cd web && npm install && npm run build",
+    "prisma:generate": "cd server && npm run prisma:generate"
   },
   "engines": {
     "node": ">=18.0.0",
