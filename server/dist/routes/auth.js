@@ -44,6 +44,7 @@ exports.auth.post("/register", rateLimit_1.authLimiter, auth_1.authenticateToken
             data: {
                 email: input.email,
                 name: input.name,
+                password: hashedPassword,
                 role: input.role,
             }
         });
@@ -63,18 +64,26 @@ exports.auth.post("/register", rateLimit_1.authLimiter, auth_1.authenticateToken
 exports.auth.post("/login", rateLimit_1.authLimiter, async (req, res) => {
     try {
         const input = loginSchema.parse(req.body);
-        // Find user
+        // Find user in database
         const user = await prisma_1.prisma.user.findUnique({
             where: { email: input.email }
         });
         if (!user) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
-        // For demo purposes, we'll use a simple password check
-        // In production, you'd hash and compare passwords
-        const isValidPassword = input.password === "admin123"; // Demo password
-        if (!isValidPassword) {
-            return res.status(401).json({ error: "Invalid credentials" });
+        // Check password if user has one (for database users)
+        if (user.password) {
+            const isValidPassword = await bcryptjs_1.default.compare(input.password, user.password);
+            if (!isValidPassword) {
+                return res.status(401).json({ error: "Invalid credentials" });
+            }
+        }
+        else {
+            // For Auth0 users or demo purposes, use simple password check
+            const isValidPassword = input.password === "admin123";
+            if (!isValidPassword) {
+                return res.status(401).json({ error: "Invalid credentials" });
+            }
         }
         // Generate JWT
         const token = jsonwebtoken_1.default.sign({ userId: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET || "fallback-secret", { expiresIn: "7d" });
@@ -90,6 +99,7 @@ exports.auth.post("/login", rateLimit_1.authLimiter, async (req, res) => {
 });
 // Get current user
 exports.auth.get("/me", auth_1.authenticateToken, async (req, res) => {
+    // Return the authenticated user from the database
     res.json({ user: req.user });
 });
 // Create initial admin user (one-time setup)
@@ -102,11 +112,14 @@ exports.auth.post("/setup", async (req, res) => {
         if (adminExists) {
             return res.status(400).json({ error: "Admin user already exists" });
         }
+        // Hash default password
+        const hashedPassword = await bcryptjs_1.default.hash("admin123", 12);
         // Create admin user
         const admin = await prisma_1.prisma.user.create({
             data: {
                 email: "admin@portfolio.com",
                 name: "Admin User",
+                password: hashedPassword,
                 role: "admin",
             }
         });

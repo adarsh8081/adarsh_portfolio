@@ -129,18 +129,18 @@ exports.analytics.get("/content", auth_1.authenticateToken, auth_1.requireAdmin,
         // Get content performance from database
         const [projects, posts, services] = await Promise.all([
             prisma_1.prisma.project.findMany({
-                select: { id: true, title: true, views: true },
-                orderBy: { views: 'desc' },
+                select: { id: true, title: true, createdAt: true },
+                orderBy: { createdAt: 'desc' },
                 take: 10,
             }),
             prisma_1.prisma.post.findMany({
-                select: { id: true, title: true, views: true },
-                orderBy: { views: 'desc' },
+                select: { id: true, title: true, date: true },
+                orderBy: { date: 'desc' },
                 take: 10,
             }),
             prisma_1.prisma.service.findMany({
-                select: { id: true, name: true, views: true },
-                orderBy: { views: 'desc' },
+                select: { id: true, title: true, price: true },
+                orderBy: { id: 'desc' },
                 take: 10,
             }),
         ]);
@@ -148,17 +148,17 @@ exports.analytics.get("/content", auth_1.authenticateToken, auth_1.requireAdmin,
             topProjects: projects.map(p => ({
                 id: p.id,
                 title: p.title,
-                views: p.views || 0,
+                createdAt: p.createdAt,
             })),
             topPosts: posts.map(p => ({
                 id: p.id,
                 title: p.title,
-                views: p.views || 0,
+                date: p.date,
             })),
             topServices: services.map(s => ({
                 id: s.id,
-                name: s.name,
-                views: s.views || 0,
+                title: s.title,
+                price: s.price,
             })),
         };
         res.json({ success: true, data: contentPerformance });
