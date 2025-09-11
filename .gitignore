@@ -108,8 +108,5 @@ Thumbs.db
 # Prisma
 prisma/migrations/
 
-# Web directory (separate project)
-web/
-
 # Python directory (separate project)
 python/
