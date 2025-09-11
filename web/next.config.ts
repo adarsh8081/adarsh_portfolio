@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   serverExternalPackages: ['@auth0/nextjs-auth0'],
   images: {
     remotePatterns: [

@@ -1,23 +1,53 @@
-# Ignore Node.js files
-server/
-web/
+# Dependencies
 node_modules/
-yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 package-lock.json
+yarn.lock
 
-# Ignore Python virtual environment
-python/venv/
-python/Lib/
-python/Scripts/
-python/share/
-python/__pycache__/
+# Next.js build outputs
+web/.next/
+web/out/
+web/dist/
+web/build/
 
-# Ignore other unnecessary files
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Git and version control
 .git/
 .gitignore
+
+# Documentation
 README.md
 *.md
+deploy.md
+quick-deploy.md
+AUTH0_INTEGRATION_GUIDE.md
+WARP.md
 
-# Ignore test files
-python/test_*.py
-python/*_test.py
+# Python files (not needed for frontend)
+app/
+python/
+server/
+.venv/
+__pycache__/
+*.py
+requirements*.txt
+test_*.py
+
+# Other unnecessary files
+.next
+.vercel
+.DS_Store
+Thumbs.db
+*.log
+
+# Scripts and config files not needed in container
+deploy.ps1
+deploy.sh
+vercel.json
+.railwayignore
