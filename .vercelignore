@@ -1,0 +1,15 @@
+# Ignore server directory and other non-web files
+server/
+python/
+tests/
+*.md
+.env.example
+start-dev.ps1
+deploy*.sh
+deploy*.ps1
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Keep only web directory for frontend deployment
+!/web

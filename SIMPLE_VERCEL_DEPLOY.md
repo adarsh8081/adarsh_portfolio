@@ -14,13 +14,17 @@ This is the easiest way to deploy your portfolio to Vercel. We'll deploy the fro
 - Choose: `adarsh8081/adarsh_portfolio`
 
 ### 3. Configure Project Settings
+**IMPORTANT**: Use these exact settings:
+
 ```
 Framework Preset: Next.js
 Root Directory: web
-Build Command: (leave default - npm run build)
-Output Directory: (leave default - .next)
-Install Command: (leave default - npm install)
+Build Command: npm run build
+Output Directory: .next
+Install Command: npm install
 ```
+
+**⚠️ Make sure Root Directory is set to `web` - this is crucial!**
 
 ### 4. Add Environment Variables
 Click **"Environment Variables"** and add these **REQUIRED** variables:
