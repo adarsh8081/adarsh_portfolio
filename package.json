@@ -9,7 +9,8 @@
     "dev:server": "cd server && npm run dev",
     "build:frontend": "cd web && npm install && npm run build",
     "build:server": "cd server && npm install && npm run build",
-    "prisma:generate": "cd server && npm run prisma:generate"
+    "prisma:generate": "cd server && npm run prisma:generate",
+    "vercel-build": "echo 'Please set Root Directory to web in Vercel settings'"
   },
   "engines": {
     "node": ">=18.0.0",
