@@ -1,422 +1,364 @@
-# 🚀 MyPortfolio Monorepo
+# 🚀 Portfolio Project - Full Stack AI-Powered Portfolio
 
-<div align="center">
+A comprehensive, modern portfolio website built with Next.js, Node.js, Python FastAPI, and AI-powered chatbot functionality.
 
-![Portfolio](https://img.shields.io/badge/Portfolio-Monorepo-blue?style=for-the-badge&logo=github)
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
-![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
-![Python](https://img.shields.io/badge/Python-3.10+-green?style=for-the-badge&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?style=for-the-badge&logo=fastapi)
+## 📋 Table of Contents
 
-*A modern, full-stack portfolio application with AI-powered features and beautiful UI*
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Portfolio-brightgreen?style=for-the-badge)](https://your-portfolio-url.com)
-[![Documentation](https://img.shields.io/badge/Documentation-Read%20More-orange?style=for-the-badge)](#documentation)
-[![Contributing](https://img.shields.io/badge/Contributing-Welcome-purple?style=for-the-badge)](CONTRIBUTING.md)
-
-</div>
-
----
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
 
 ## ✨ Features
 
-### 🎨 **Modern Frontend**
-- **Next.js 15** with React 19 and Turbopack
-- **Glassmorphism Design** with interactive 3D elements
-- **Dynamic Theming** with multiple accent colors
-- **Smooth Animations** using Framer Motion
-- **Responsive Design** for all devices
+### Frontend (Next.js)
+- 🎨 Modern, responsive design with glassmorphism effects
+- 🌙 Dark/Light theme support
+- 📱 Mobile-first responsive design
+- 🎭 Smooth animations with Framer Motion
+- 🎯 3D elements with Three.js
+- 🔍 Advanced search functionality
+- 📊 Analytics integration
 
-### 🤖 **AI-Powered Features**
-- **RAG Chatbot** with Retrieval-Augmented Generation
-- **Vector Search** using sentence transformers and FAISS
-- **Voice Mode** with Speech-to-Text and Text-to-Speech
-- **Real-time Data Sync** with portfolio content
+### Backend (Node.js + Express)
+- 🔐 JWT-based authentication
+- 📧 Email service integration
+- 📊 Analytics tracking
+- 🗄️ Database management with Prisma
+- 🚀 Rate limiting and caching
+- 📝 CMS functionality
 
-### 🔧 **Backend Services**
-- **Express API** with TypeScript and Prisma
-- **FastAPI Python Service** for AI capabilities
-- **JWT Authentication** with role-based access
-- **Rate Limiting** and caching for performance
+### AI Service (Python FastAPI)
+- 🤖 AI-powered chatbot with RAG (Retrieval-Augmented Generation)
+- 🔍 Vector search with embeddings
+- 🎤 Text-to-Speech functionality
+- 🧠 Multiple LLM support (OpenAI, Gemini, Local)
+- 📚 Portfolio data integration
 
-### 📊 **Admin Dashboard**
-- **Content Management** for all portfolio sections
-- **User Management** with role-based permissions
-- **Analytics Integration** with Google Analytics and PostHog
-- **Real-time Monitoring** of all services
+### Testing
+- 🧪 Comprehensive test suite with Cypress (E2E)
+- 🔬 Selenium automation testing
+- 🧪 API testing with pytest
+- 🔍 Integration testing
+- 📊 Test coverage reporting
 
----
+## 🛠 Tech Stack
 
-## 🏗️ Architecture
+### Frontend
+- **Framework**: Next.js 15 with React 19
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **3D Graphics**: Three.js with React Three Fiber
+- **Testing**: Cypress
+- **Deployment**: Vercel
 
-```mermaid
-graph TB
-    A[Frontend - Next.js] --> B[Backend API - Express]
-    A --> C[Python AI Service - FastAPI]
-    B --> D[Database - SQLite/MySQL]
-    C --> D
-    B --> E[Email Service - Nodemailer]
-    A --> F[Admin Dashboard]
-    F --> B
-    F --> C
+### Backend
+- **Runtime**: Node.js 20
+- **Framework**: Express.js
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: JWT + Auth0
+- **Email**: Nodemailer
+- **Testing**: Jest + Supertest
+- **Deployment**: Railway
+
+### AI Service
+- **Framework**: FastAPI (Python 3.11)
+- **ML Libraries**: Sentence Transformers, FAISS
+- **LLM Integration**: OpenAI, Google Gemini, Hugging Face
+- **TTS**: pyttsx3
+- **Testing**: pytest + httpx
+- **Deployment**: Railway
+
+### DevOps
+- **Containerization**: Docker + Docker Compose
+- **CI/CD**: GitHub Actions
+- **Monitoring**: Built-in health checks
+- **Security**: Rate limiting, CORS, input validation
+
+## 📁 Project Structure
+
 ```
-
-### 📁 Project Structure
-
+portfolio/
+├── web/                    # Next.js Frontend
+│   ├── src/
+│   │   ├── app/           # App Router pages
+│   │   ├── components/    # React components
+│   │   ├── lib/           # Utilities and configurations
+│   │   └── hooks/         # Custom React hooks
+│   ├── cypress/           # E2E tests
+│   └── public/            # Static assets
+├── server/                # Node.js Backend
+│   ├── src/
+│   │   ├── routes/        # API routes
+│   │   ├── middleware/    # Express middleware
+│   │   └── prisma.ts      # Database client
+│   └── prisma/            # Database schema and migrations
+├── python/                 # Python AI Service
+│   ├── app/
+│   │   └── main.py        # FastAPI application
+│   └── database.py        # Database utilities
+├── tests/                  # Comprehensive test suite
+│   ├── test_api.py        # API tests
+│   ├── test_python_service.py # Python service tests
+│   └── test_integration.py # Integration tests
+├── docker-compose.yml      # Multi-service Docker setup
+├── .github/workflows/      # CI/CD pipelines
+└── docs/                   # Documentation
 ```
-myportfolio/
-├── 🌐 web/                 # Next.js 15 Frontend
-├── ⚙️ server/              # Express API Backend
-├── 🐍 python/              # FastAPI AI Service
-├── 🗄️ db/                  # Docker MySQL (Optional)
-├── 📦 shared/              # Shared utilities
-└── 📄 README.md
-```
-
----
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- **Node.js** 20+ 
-- **npm** 10+
-- **Python** 3.10+
-- **Docker** (optional, for MySQL)
+- Node.js 20+
+- Python 3.11+
+- PostgreSQL 15+
+- Docker (optional)
 
-### 1️⃣ Clone & Install
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/adarsh8081/PortFolio.git
-cd PortFolio
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
 ```
 
-### 2️⃣ Backend Setup
+### 2. Environment Setup
+
+```bash
+# Copy environment template
+cp env.example .env
+
+# Edit .env with your configuration
+nano .env
+```
+
+### 3. Database Setup
+
+```bash
+# Start PostgreSQL (using Docker)
+docker run --name portfolio-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=portfolio -p 5432:5432 -d postgres:15
+
+# Or use local PostgreSQL
+createdb portfolio
+```
+
+### 4. Install Dependencies
+
+```bash
+# Install frontend dependencies
+cd web && npm install && cd ..
+
+# Install backend dependencies
+cd server && npm install && cd ..
+
+# Install Python dependencies
+cd python && pip install -r requirements.txt && cd ..
+
+# Install test dependencies
+pip install -r tests/requirements.txt
+```
+
+### 5. Database Migration
 
 ```bash
 cd server
-npm install
+npx prisma migrate dev
 npx prisma generate
-npx prisma migrate dev --name init
-npm run dev
+cd ..
 ```
 
-### 3️⃣ Frontend Setup
+### 6. Start Services
+
+#### Option A: Docker Compose (Recommended)
 
 ```bash
-cd web
-npm install
-npm run dev
+docker-compose up -d
 ```
 
-### 4️⃣ AI Service Setup
+#### Option B: Manual Start
 
 ```bash
-cd python
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1  # Windows
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+# Terminal 1: Start Backend API
+cd server && npm run dev
+
+# Terminal 2: Start Python Service
+cd python && uvicorn app.main:app --reload
+
+# Terminal 3: Start Frontend
+cd web && npm run dev
 ```
 
-### 5️⃣ Access the Application
+### 7. Access the Application
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:4000
-- **AI Service**: http://localhost:8000
-- **Admin Dashboard**: http://localhost:3000/admin
+- **Python Service**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
 
----
+## 🧪 Testing
 
-## 🔧 Configuration
+### Run All Tests
 
-### Backend Environment (`server/.env`)
+```bash
+# Using the test runner script
+./run_tests.sh
 
-```ini
-# Server Configuration
-PORT=4000
-DATABASE_URL="file:./dev.db"
+# Or using PowerShell on Windows
+.\run_tests.ps1
+```
 
-# Email Configuration
+### Run Specific Test Suites
+
+```bash
+# Frontend tests (Cypress)
+cd web && npm run test
+
+# Backend API tests
+cd server && npm test
+
+# Python service tests
+cd python && python -m pytest ../tests/test_python_service.py
+
+# Integration tests
+python -m pytest tests/test_integration.py
+
+# All Python tests
+python -m pytest tests/
+```
+
+### Test Reports
+
+- **Cypress**: Reports in `web/cypress/reports/`
+- **Python**: HTML report in `reports/pytest_report.html`
+- **Coverage**: Coverage reports in `coverage/`
+
+## 🚀 Deployment
+
+### Production Deployment
+
+#### 1. Frontend (Vercel)
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy from web directory
+cd web
+vercel --prod
+```
+
+#### 2. Backend (Railway)
+
+```bash
+# Install Railway CLI
+npm i -g @railway/cli
+
+# Login and deploy
+railway login
+railway deploy
+```
+
+#### 3. Python Service (Railway)
+
+```bash
+# Deploy Python service
+cd python
+railway deploy
+```
+
+### Environment Variables
+
+Set the following environment variables in your deployment platforms:
+
+#### Frontend (Vercel)
+```
+NEXT_PUBLIC_API_URL=https://your-api.railway.app
+NEXT_PUBLIC_CHATBOT_URL=https://your-python-service.railway.app
+```
+
+#### Backend (Railway)
+```
+DATABASE_URL=postgresql://username:password@host:port/database
+JWT_SECRET=your-super-secret-jwt-key
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-
-# JWT Security
-JWT_SECRET=your-super-secret-jwt-key
-
-# AI Service Integration
-PYTHON_SERVICE_URL=http://localhost:8000
+PYTHON_SERVICE_URL=https://your-python-service.railway.app
 ```
 
-### Frontend Environment (`web/.env.local`)
-
-```ini
-# API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:4000
-NEXT_PUBLIC_CHATBOT_URL=http://localhost:8000
-
-# Analytics (Optional)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-NEXT_PUBLIC_POSTHOG_KEY=phc_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
+#### Python Service (Railway)
 ```
-
-### Python Service Environment (`python/.env`)
-
-```ini
-# OpenAI Configuration (Optional)
+DATABASE_URL=postgresql://username:password@host:port/database
 OPENAI_API_KEY=your-openai-api-key
-
-# Database Path
-DATABASE_PATH=../server/prisma/dev.db
-
-# TTS Settings
-TTS_RATE=150
-TTS_VOLUME=0.8
+GEMINI_API_KEY=your-gemini-api-key
 ```
 
----
+### Docker Deployment
+
+```bash
+# Build and run with Docker Compose
+docker-compose -f docker-compose.prod.yml up -d
+```
 
 ## 📚 API Documentation
 
-### 🔗 Base URL
-```
-http://localhost:4000/api
-```
+### Backend API Endpoints
 
-### 📖 Public Endpoints
+- `GET /health` - Health check
+- `POST /api/auth/login` - User login
+- `POST /api/auth/register` - User registration
+- `GET /api/projects` - Get projects
+- `POST /api/email` - Send email
+- `GET /api/analytics` - Get analytics
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/projects` | List all projects |
-| `GET` | `/posts` | List all blog posts |
-| `GET` | `/services` | List all services |
-| `GET` | `/skills` | List all skills |
-| `GET` | `/testimonials` | List all testimonials |
-| `GET` | `/achievements` | List all achievements |
-| `GET` | `/timeline` | List all timeline events |
-| `POST` | `/contact` | Send contact email |
+### Python Service Endpoints
 
-### 🔒 Protected Endpoints
-
-| Method | Endpoint | Description | Role Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/projects` | Create project | Editor/Admin |
-| `PUT` | `/projects/:id` | Update project | Editor/Admin |
-| `DELETE` | `/projects/:id` | Delete project | Editor/Admin |
-| `POST` | `/testimonials` | Create testimonial | Editor/Admin |
-| `PUT` | `/testimonials/:id` | Update testimonial | Editor/Admin |
-| `DELETE` | `/testimonials/:id` | Delete testimonial | Editor/Admin |
-
-### 🔐 Authentication Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/auth/login` | Login with email/password |
-| `POST` | `/auth/register` | Register new user (Admin only) |
-| `GET` | `/auth/me` | Get current user info |
-| `POST` | `/auth/setup` | Create initial admin user |
-
----
-
-## 🤖 AI Chatbot Features
-
-### 🧠 **Intelligent Responses**
-- **RAG (Retrieval-Augmented Generation)** using real portfolio data
-- **LLM Integration** with OpenAI GPT-3.5/4 or local Hugging Face models
-- **Context-Aware** conversation history
-- **Source Attribution** showing which portfolio items were used
-
-### 🎤 **Voice Mode**
-- **Speech-to-Text** using browser's Web Speech API
-- **Text-to-Speech** with customizable voice settings
-- **Audio Caching** for efficient performance
-- **Voice Controls** with visual indicators
-
-### 🔄 **Real-time Data Sync**
-- **Database Integration** with automatic data loading
-- **Vector Search** using sentence-transformers and FAISS
-- **Auto-refresh** capabilities from admin dashboard
-- **Health Monitoring** with real-time status updates
-
----
-
-## 📊 Admin Dashboard
-
-Access the admin dashboard at `http://localhost:3000/admin`
-
-### 🔑 Demo Credentials
-- **Email**: `admin@portfolio.com`
-- **Password**: `admin123`
-
-### 📋 Features
-
-#### 📝 Content Management
-- **Projects**: Full CRUD with rich text editing and image uploads
-- **Blog Posts**: Create and manage content with tags and SEO
-- **Services**: Manage offerings with pricing and features
-- **Skills**: Track technical skills with proficiency levels
-- **Testimonials**: Collect and display client feedback
-- **Achievements**: Showcase certifications and awards
-- **Timeline**: Create professional timeline events
-
-#### 👥 User Management
-- **Role-based Access**: Admin, Editor, and User roles
-- **User Profiles**: Manage accounts and permissions
-- **Authentication**: Secure JWT-based auth with sessions
-
-#### 🤖 AI Chatbot Management
-- **Knowledge Base**: Monitor and refresh AI data
-- **Conversation Analytics**: Track usage and quality
-- **Voice Controls**: Manage TTS/STT settings
-- **Performance Monitoring**: Real-time status checks
-
-#### 📈 Analytics Dashboard
-- **Google Analytics**: Track page views and behavior
-- **PostHog Integration**: Advanced analytics and A/B testing
-- **Real-time Metrics**: Live visitor tracking
-- **Content Performance**: Track popular content
-- **Custom Events**: Track interactions and conversions
-
----
-
-## 🛠️ Development
-
-### Available Scripts
-
-#### Backend (`server/`)
-```bash
-npm run dev           # Start API in watch mode
-npm run build         # TypeScript build to dist/
-npm run start         # Start compiled server
-npm run prisma:generate
-npm run prisma:migrate
-```
-
-#### Frontend (`web/`)
-```bash
-npm run dev          # Next dev with Turbopack
-npm run build        # Next build with Turbopack
-npm run start        # Start production server
-npm run lint         # ESLint
-```
-
-#### Python Service (`python/`)
-```bash
-uvicorn app.main:app --reload --port 8000
-```
-
-### 🗄️ Database
-
-The application uses **SQLite** by default with Prisma ORM. To switch to MySQL:
-
-1. Start MySQL with Docker:
-```bash
-cd db
-docker compose up -d
-```
-
-2. Update `server/.env`:
-```ini
-DATABASE_URL=mysql://root:root@localhost:3306/portfolio
-```
-
-3. Run migrations:
-```bash
-cd server
-npx prisma generate
-npx prisma migrate dev
-```
-
----
-
-## 🎨 Technologies Used
-
-### Frontend
-- **Next.js 15** - React framework with Turbopack
-- **React 19** - UI library with latest features
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS v4** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **Three.js** - 3D graphics library
-- **Axios** - HTTP client
-- **SWR** - Data fetching library
-
-### Backend
-- **Express 5** - Web framework
-- **Prisma 6** - Database ORM
-- **Nodemailer** - Email service
-- **JWT** - Authentication
-- **Rate Limiting** - API protection
-
-### AI Service
-- **FastAPI** - Python web framework
-- **Sentence Transformers** - Text embeddings
-- **FAISS** - Vector similarity search
-- **OpenAI API** - LLM integration
-- **pyttsx3** - Text-to-speech
-
-### Database
-- **SQLite** - Default database
-- **MySQL** - Optional production database
-- **Docker** - Containerization
-
----
-
-## 📈 Performance Features
-
-- **⚡ Turbopack** for ultra-fast development
-- **🚀 Server-side Rendering** with Next.js
-- **💾 In-memory Caching** for API responses
-- **🔄 Real-time Data Sync** between services
-- **📊 Analytics Integration** for performance monitoring
-- **🛡️ Rate Limiting** for API protection
-- **🎯 Optimized Images** and assets
-
----
+- `GET /health` - Health check
+- `POST /search` - Vector search
+- `POST /chat` - AI chatbot
+- `GET /portfolio` - Portfolio data
+- `GET /stats` - Service statistics
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Workflow
-
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
----
+### Development Guidelines
+
+- Follow the existing code style
+- Write tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+## 🆘 Support
+
+If you encounter any issues:
+
+1. Check the [Issues](https://github.com/yourusername/portfolio/issues) page
+2. Create a new issue with detailed information
+3. Contact: your-email@example.com
 
 ## 🙏 Acknowledgments
 
-- **Next.js Team** for the amazing framework
-- **Vercel** for hosting and deployment tools
-- **OpenAI** for AI capabilities
-- **Hugging Face** for open-source models
-- **Prisma** for the excellent ORM
-- **Tailwind CSS** for the utility-first approach
+- Next.js team for the amazing framework
+- Vercel for hosting and deployment
+- Railway for backend hosting
+- OpenAI and Google for AI services
+- The open-source community for amazing tools
 
 ---
 
-<div align="center">
-
-**⭐ Star this repository if you found it helpful!**
-
-[![GitHub stars](https://img.shields.io/github/stars/adarsh8081/PortFolio?style=social)](https://github.com/adarsh8081/PortFolio)
-[![GitHub forks](https://img.shields.io/github/forks/adarsh8081/PortFolio?style=social)](https://github.com/adarsh8081/PortFolio)
-[![GitHub issues](https://img.shields.io/github/issues/adarsh8081/PortFolio?style=social)](https://github.com/adarsh8081/PortFolio)
-
-Made with ❤️ by [Your Name](https://github.com/adarsh8081)
-
-</div>
+**Made with ❤️ by [Your Name](https://yourwebsite.com)**
