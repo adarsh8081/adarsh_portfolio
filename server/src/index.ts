@@ -58,9 +58,17 @@ app.get("/health", (_req, res) => {
 const port = Number(process.env.PORT || 4000);
 const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
 
-app.listen(port, host, () => {
-	// eslint-disable-next-line no-console
-	console.log(`API listening on http://${host}:${port}`);
-});
+// For Vercel deployment, export the app
+if (process.env.NODE_ENV === 'production') {
+	module.exports = app;
+} else {
+	app.listen(port, host, () => {
+		// eslint-disable-next-line no-console
+		console.log(`API listening on http://${host}:${port}`);
+	});
+}
+
+// Also export as default for ES6 compatibility
+export default app;
 
 
