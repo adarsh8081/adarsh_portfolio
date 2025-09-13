@@ -166,6 +166,7 @@ export default function AboutPage() {
 							src="/images/IMG-20250909-WA0009.jpg" 
 							alt="Adarsh Kumar professional portrait" 
 							fill
+							priority
 							className="object-cover object-center"
 							style={{
 								filter: 'brightness(0.8) contrast(1.1) saturate(1.1)'
@@ -203,6 +204,7 @@ export default function AboutPage() {
 										src="/images/IMG-20250909-WA0007.jpg" 
 										alt="Adarsh Kumar working on coding projects" 
 										fill
+										priority
 										className="object-cover"
 										style={{
 											filter: 'brightness(1.1) contrast(1.05)'
