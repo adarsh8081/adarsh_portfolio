@@ -320,13 +320,6 @@ export function EnhancedDashboard() {
 				</motion.div>
 			</div>
 
-			{/* Floating Action Button for AI Chatbot */}
-			<button
-				onClick={() => setActiveTab("chatbot")}
-				className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-accent-600 to-accent-400 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-40"
-			>
-				<Bot size={24} />
-			</button>
 
 			{/* Issues Notification */}
 			{notifications.length > 0 && (
@@ -386,87 +379,6 @@ function OverviewPanel({ stats, onRefresh }: { stats: DashboardStats; onRefresh:
 					icon={Award}
 					color="orange"
 				/>
-			</div>
-
-			{/* AI Status */}
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-				<div className="bg-slate-50 dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600">
-					<h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-900 dark:text-slate-100">
-						<Bot size={20} className="text-accent-500" />
-						AI Service Status
-					</h3>
-					<div className="space-y-3">
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Service Status</span>
-							<span className={`px-2 py-1 rounded-full text-xs ${
-								stats.aiStatus.online 
-									? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-									: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-							}`}>
-								{stats.aiStatus.online ? "Online" : "Offline"}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">LLM Available</span>
-							<span className={`px-2 py-1 rounded-full text-xs ${
-								stats.aiStatus.llmAvailable 
-									? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-									: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-							}`}>
-								{stats.aiStatus.llmAvailable ? "Yes" : "No"}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">TTS Available</span>
-							<span className={`px-2 py-1 rounded-full text-xs ${
-								stats.aiStatus.ttsAvailable 
-									? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-									: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-							}`}>
-								{stats.aiStatus.ttsAvailable ? "Yes" : "No"}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Portfolio Items</span>
-							<span className="text-accent-600 dark:text-accent-400 font-medium">
-								{stats.aiStatus.portfolioItems}
-							</span>
-						</div>
-					</div>
-				</div>
-
-				<div className="bg-slate-50 dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600">
-					<h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-900 dark:text-slate-100">
-						<TrendingUp size={20} className="text-accent-500" />
-						Analytics Overview
-					</h3>
-					<div className="space-y-3">
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Total Visits</span>
-							<span className="text-accent-600 dark:text-accent-400 font-medium">
-								{stats.analytics.totalVisits.toLocaleString()}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Unique Visitors</span>
-							<span className="text-accent-600 dark:text-accent-400 font-medium">
-								{stats.analytics.uniqueVisitors.toLocaleString()}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Page Views</span>
-							<span className="text-accent-600 dark:text-accent-400 font-medium">
-								{stats.analytics.pageViews.toLocaleString()}
-							</span>
-						</div>
-						<div className="flex items-center justify-between">
-							<span className="text-slate-700 dark:text-slate-300">Bounce Rate</span>
-							<span className="text-accent-600 dark:text-accent-400 font-medium">
-								{stats.analytics.bounceRate}%
-							</span>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	);

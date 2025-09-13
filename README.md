@@ -179,7 +179,14 @@ cd ..
 docker-compose up -d
 ```
 
-#### Option B: Manual Start
+#### Option B: PowerShell Script (Windows)
+
+```powershell
+# Run the development startup script
+.\start-dev.ps1
+```
+
+#### Option C: Manual Start
 
 ```bash
 # Terminal 1: Start Backend API

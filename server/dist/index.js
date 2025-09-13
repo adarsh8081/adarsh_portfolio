@@ -32,7 +32,23 @@ app.use("/api", rateLimit_1.cmsLimiter, (0, rateLimit_1.cacheMiddleware)(), cms_
 // Email routes
 app.use("/api/email", email_1.email);
 app.get("/health", (_req, res) => {
-    res.json({ ok: true });
+    try {
+        res.json({
+            ok: true,
+            status: "healthy",
+            timestamp: new Date().toISOString(),
+            uptime: process.uptime(),
+            memory: process.memoryUsage()
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            ok: false,
+            status: "unhealthy",
+            error: error instanceof Error ? error.message : "Unknown error",
+            timestamp: new Date().toISOString()
+        });
+    }
 });
 const port = Number(process.env.PORT || 4000);
 const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
