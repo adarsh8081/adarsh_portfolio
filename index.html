@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Portfolio...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .message {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .sub-message {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <div class="message">Setting up your portfolio...</div>
+        <div class="sub-message">
+            If this page doesn't redirect automatically,<br>
+            please check the Vercel dashboard and ensure<br>
+            <strong>Root Directory</strong> is set to <strong>"web"</strong>
+        </div>
+    </div>
+    
+    <script>
+        // Try to redirect to the correct path after a short delay
+        setTimeout(() => {
+            // Try different possible paths
+            const possiblePaths = ['/web', '/web/', '/web/index.html'];
+            
+            // Check if we can access the web directory
+            fetch('/web/')
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/web/';
+                    } else {
+                        // Show instructions
+                        document.querySelector('.message').innerHTML = 'Portfolio Setup Required';
+                        document.querySelector('.sub-message').innerHTML = 
+                            'Please go to your Vercel dashboard:<br>' +
+                            '1. Click Settings → General<br>' +
+                            '2. Set Root Directory to "web"<br>' +
+                            '3. Save and redeploy<br><br>' +
+                            'Your beautiful portfolio will then load!';
+                        document.querySelector('.spinner').style.display = 'none';
+                    }
+                })
+                .catch(() => {
+                    // Show instructions
+                    document.querySelector('.message').innerHTML = 'Portfolio Setup Required';
+                    document.querySelector('.sub-message').innerHTML = 
+                        'Please go to your Vercel dashboard:<br>' +
+                        '1. Click Settings → General<br>' +
+                        '2. Set Root Directory to "web"<br>' +
+                        '3. Save and redeploy<br><br>' +
+                        'Your beautiful portfolio will then load!';
+                    document.querySelector('.spinner').style.display = 'none';
+                });
+        }, 2000);
+    </script>
+</body>
+</html>
