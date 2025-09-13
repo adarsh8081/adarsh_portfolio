@@ -38,12 +38,11 @@ Choose one of these cloud database services:
 2. Click **"New Project"**
 3. Import your GitHub repository: `https://github.com/adarsh8081/adarsh_portfolio.git`
 4. Configure the project:
-   - **Framework Preset**: Other
-   - **Root Directory**: `.` (leave empty)
-   - **Build and Output Settings**:
-     - Build Command: `npm run vercel-build`
-     - Output Directory: `web/.next`
-     - Install Command: `npm install`
+   - **Framework Preset**: Next.js
+   - **Root Directory**: `web`
+   - **Build Command**: `npm run build` (or leave default)
+   - **Output Directory**: `.next` (or leave default)
+   - **Install Command**: `npm install` (or leave default)
 
 ### 2.2 Configure Environment Variables
 

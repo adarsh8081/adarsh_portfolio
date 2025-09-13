@@ -186,6 +186,26 @@ docker-compose up -d
 .\start-dev.ps1
 ```
 
+---
+
+## 🚀 Deployment
+
+### Quick Deploy to Vercel (Recommended)
+
+1. **Go to [Vercel Dashboard](https://vercel.com/dashboard)**
+2. **Import Repository**: `adarsh8081/adarsh_portfolio`
+3. **Configure**:
+   - Framework: **Next.js**
+   - Root Directory: **web**
+   - Build Command: **npm run build** (default)
+4. **Add Environment Variables** (see `SIMPLE_VERCEL_DEPLOY.md`)
+5. **Deploy!** 🎉
+
+**📚 Deployment Guides:**
+- `SIMPLE_VERCEL_DEPLOY.md` - Easiest deployment (frontend only)
+- `VERCEL_DEPLOYMENT_GUIDE.md` - Complete full-stack deployment
+- `FRONTEND_ONLY_VERCEL.md` - Alternative approach
+
 #### Option C: Manual Start
 
 ```bash
