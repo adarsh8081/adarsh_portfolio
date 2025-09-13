@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Settings, Database, Trash2, Shield, Mail, Bot, RefreshCw, Activity } from "lucide-react";
+import { Settings, Database, Trash2, Shield, Mail } from "lucide-react";
 
 export function SettingsPanel() {
 	const [settings, setSettings] = useState({
 		siteName: "Adarsh Portfolio",
-		siteDescription: "Futuristic, interactive portfolio with 3D visuals and AI-powered features.",
+		siteDescription: "Futuristic, interactive portfolio with 3D visuals and modern features.",
 		contactEmail: "contact@adarsh.dev",
 		socialLinks: {
 			github: "https://github.com/adarsh",
@@ -15,7 +15,6 @@ export function SettingsPanel() {
 			twitter: "https://twitter.com/adarsh",
 		},
 		features: {
-			aiSearch: true,
 			blog: true,
 			contactForm: true,
 			analytics: true,
@@ -23,9 +22,6 @@ export function SettingsPanel() {
 	});
 
 	const [loading, setLoading] = useState(false);
-	const [aiStatus, setAiStatus] = useState<{ status: string; message: string; ok: boolean; llm_available: boolean; tts_available: boolean; portfolio_items: number } | null>(null);
-	const [aiStats, setAiStats] = useState<{ llm_provider: string; embedding_model: string; audio_cache_size: number } | null>(null);
-	const [refreshing, setRefreshing] = useState(false);
 
 	const handleSave = async () => {
 		setLoading(true);
@@ -54,62 +50,6 @@ export function SettingsPanel() {
 		}
 	};
 
-	const refreshAiData = async () => {
-		setRefreshing(true);
-		try {
-			const response = await fetch("http://localhost:4000/api/sync/refresh-ai-data", {
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
-				},
-			});
-			
-			if (response.ok) {
-				const data = await response.json();
-				alert(data.message || "AI data refreshed successfully!");
-				// Refresh AI status and stats
-				await Promise.all([checkAiStatus(), checkAiStats()]);
-			} else {
-				alert("Failed to refresh AI data");
-			}
-		} catch (error) {
-			console.error("Failed to refresh AI data:", error);
-			alert("Failed to refresh AI data");
-		} finally {
-			setRefreshing(false);
-		}
-	};
-
-	const checkAiStatus = async () => {
-		try {
-			const response = await fetch("http://localhost:4000/api/sync/ai-status");
-			if (response.ok) {
-				const data = await response.json();
-				setAiStatus(data.status);
-			}
-		} catch (error) {
-			console.error("Failed to check AI status:", error);
-		}
-	};
-
-	const checkAiStats = async () => {
-		try {
-			const response = await fetch("http://localhost:4000/api/sync/ai-stats");
-			if (response.ok) {
-				const data = await response.json();
-				setAiStats(data.stats);
-			}
-		} catch (error) {
-			console.error("Failed to check AI stats:", error);
-		}
-	};
-
-	// Load AI status on component mount
-	React.useEffect(() => {
-		checkAiStatus();
-		checkAiStats();
-	}, []);
-
 	return (
 		<div className="space-y-8">
 			<div className="flex items-center justify-between">
@@ -117,10 +57,9 @@ export function SettingsPanel() {
 				<button
 					onClick={handleSave}
 					disabled={loading}
-					className="px-4 py-2 rounded-xl text-white font-medium disabled:opacity-50"
-					style={{ background: "var(--gradient-1)" }}
+					className="px-6 py-2 rounded-lg bg-accent-600 hover:bg-accent-700 text-white font-medium transition-colors disabled:opacity-50"
 				>
-					{loading ? "Saving..." : "Save Settings"}
+					{loading ? "Saving..." : "Save Changes"}
 				</button>
 			</div>
 
@@ -128,6 +67,7 @@ export function SettingsPanel() {
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.1 }}
 				className="space-y-4"
 			>
 				<div className="flex items-center gap-2 mb-4">
@@ -135,14 +75,14 @@ export function SettingsPanel() {
 					<h3 className="text-lg font-semibold">General</h3>
 				</div>
 
-				<div className="grid grid-cols-2 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					<div>
 						<label className="block text-sm font-medium mb-2">Site Name</label>
 						<input
 							type="text"
 							value={settings.siteName}
-							onChange={(e) => setSettings({ ...settings, siteName: e.target.value })}
-							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+							onChange={(e) => setSettings(prev => ({ ...prev, siteName: e.target.value }))}
+							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 						/>
 					</div>
 					<div>
@@ -150,8 +90,8 @@ export function SettingsPanel() {
 						<input
 							type="email"
 							value={settings.contactEmail}
-							onChange={(e) => setSettings({ ...settings, contactEmail: e.target.value })}
-							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+							onChange={(e) => setSettings(prev => ({ ...prev, contactEmail: e.target.value }))}
+							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 						/>
 					</div>
 				</div>
@@ -160,9 +100,9 @@ export function SettingsPanel() {
 					<label className="block text-sm font-medium mb-2">Site Description</label>
 					<textarea
 						value={settings.siteDescription}
-						onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
+						onChange={(e) => setSettings(prev => ({ ...prev, siteDescription: e.target.value }))}
 						rows={3}
-						className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+						className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 					/>
 				</div>
 			</motion.div>
@@ -171,7 +111,7 @@ export function SettingsPanel() {
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.1 }}
+				transition={{ delay: 0.2 }}
 				className="space-y-4"
 			>
 				<div className="flex items-center gap-2 mb-4">
@@ -179,17 +119,17 @@ export function SettingsPanel() {
 					<h3 className="text-lg font-semibold">Social Links</h3>
 				</div>
 
-				<div className="grid grid-cols-3 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 					<div>
 						<label className="block text-sm font-medium mb-2">GitHub</label>
 						<input
 							type="url"
 							value={settings.socialLinks.github}
-							onChange={(e) => setSettings({
-								...settings,
-								socialLinks: { ...settings.socialLinks, github: e.target.value }
-							})}
-							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								socialLinks: { ...prev.socialLinks, github: e.target.value }
+							}))}
+							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 						/>
 					</div>
 					<div>
@@ -197,11 +137,11 @@ export function SettingsPanel() {
 						<input
 							type="url"
 							value={settings.socialLinks.linkedin}
-							onChange={(e) => setSettings({
-								...settings,
-								socialLinks: { ...settings.socialLinks, linkedin: e.target.value }
-							})}
-							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								socialLinks: { ...prev.socialLinks, linkedin: e.target.value }
+							}))}
+							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 						/>
 					</div>
 					<div>
@@ -209,11 +149,11 @@ export function SettingsPanel() {
 						<input
 							type="url"
 							value={settings.socialLinks.twitter}
-							onChange={(e) => setSettings({
-								...settings,
-								socialLinks: { ...settings.socialLinks, twitter: e.target.value }
-							})}
-							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/10 dark:bg-black/20"
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								socialLinks: { ...prev.socialLinks, twitter: e.target.value }
+							}))}
+							className="w-full px-3 py-2 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10 focus:outline-none focus:ring-2 focus:ring-accent-500"
 						/>
 					</div>
 				</div>
@@ -223,7 +163,7 @@ export function SettingsPanel() {
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.2 }}
+				transition={{ delay: 0.3 }}
 				className="space-y-4"
 			>
 				<div className="flex items-center gap-2 mb-4">
@@ -231,92 +171,43 @@ export function SettingsPanel() {
 					<h3 className="text-lg font-semibold">Features</h3>
 				</div>
 
-				<div className="grid grid-cols-2 gap-4">
-					{Object.entries(settings.features).map(([key, value]) => (
-						<div key={key} className="flex items-center justify-between p-3 rounded-lg border border-white/20 dark:border-white/10">
-							<span className="capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-							<label className="relative inline-flex items-center cursor-pointer">
-								<input
-									type="checkbox"
-									checked={value}
-									onChange={(e) => setSettings({
-										...settings,
-										features: { ...settings.features, [key]: e.target.checked }
-									})}
-									className="sr-only peer"
-								/>
-								<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent-300 dark:peer-focus:ring-accent-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent-600"></div>
-							</label>
-						</div>
-					))}
-				</div>
-			</motion.div>
-
-			{/* AI Service Management */}
-			<motion.div
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.3 }}
-				className="space-y-4"
-			>
-				<div className="flex items-center gap-2 mb-4">
-					<Bot size={20} className="text-accent-600 dark:text-accent-400" />
-					<h3 className="text-lg font-semibold">AI Service</h3>
-				</div>
-
-				{/* AI Status */}
-				{aiStatus && (
-					<div className="grid grid-cols-2 gap-4 p-4 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10">
-						<div className="flex items-center gap-2">
-							<Activity size={16} className={aiStatus.ok ? "text-green-500" : "text-red-500"} />
-							<span className="text-sm font-medium">Status:</span>
-							<span className={`text-sm ${aiStatus.ok ? "text-green-500" : "text-red-500"}`}>
-								{aiStatus.ok ? "Online" : "Offline"}
-							</span>
-						</div>
-						<div className="text-sm">
-							<span className="font-medium">LLM:</span> {aiStatus.llm_available ? "Available" : "Unavailable"}
-						</div>
-						<div className="text-sm">
-							<span className="font-medium">TTS:</span> {aiStatus.tts_available ? "Available" : "Unavailable"}
-						</div>
-						<div className="text-sm">
-							<span className="font-medium">Portfolio Items:</span> {aiStatus.portfolio_items}
-						</div>
-					</div>
-				)}
-
-				{/* AI Stats */}
-				{aiStats && (
-					<div className="grid grid-cols-2 gap-4 p-4 rounded-lg border border-white/20 dark:border-white/10 bg-white/5 dark:bg-black/10">
-						<div className="text-sm">
-							<span className="font-medium">Provider:</span> {aiStats.llm_provider}
-						</div>
-						<div className="text-sm">
-							<span className="font-medium">Embedding Model:</span> {aiStats.embedding_model}
-						</div>
-						<div className="text-sm">
-							<span className="font-medium">Audio Cache:</span> {aiStats.audio_cache_size} items
-						</div>
-					</div>
-				)}
-
-				<div className="flex gap-4">
-					<button
-						onClick={refreshAiData}
-						disabled={refreshing}
-						className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 dark:border-white/10 hover:bg-white/10 transition-colors disabled:opacity-50"
-					>
-						<RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />
-						{refreshing ? "Refreshing..." : "Refresh AI Data"}
-					</button>
-					<button
-						onClick={checkAiStatus}
-						className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 dark:border-white/10 hover:bg-white/10 transition-colors"
-					>
-						<Activity size={16} />
-						Check Status
-					</button>
+				<div className="space-y-3">
+					<label className="flex items-center gap-3">
+						<input
+							type="checkbox"
+							checked={settings.features.blog}
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								features: { ...prev.features, blog: e.target.checked }
+							}))}
+							className="w-4 h-4 text-accent-600 bg-white/5 border-white/20 rounded focus:ring-accent-500"
+						/>
+						<span className="text-sm font-medium">Enable Blog</span>
+					</label>
+					<label className="flex items-center gap-3">
+						<input
+							type="checkbox"
+							checked={settings.features.contactForm}
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								features: { ...prev.features, contactForm: e.target.checked }
+							}))}
+							className="w-4 h-4 text-accent-600 bg-white/5 border-white/20 rounded focus:ring-accent-500"
+						/>
+						<span className="text-sm font-medium">Enable Contact Form</span>
+					</label>
+					<label className="flex items-center gap-3">
+						<input
+							type="checkbox"
+							checked={settings.features.analytics}
+							onChange={(e) => setSettings(prev => ({ 
+								...prev, 
+								features: { ...prev.features, analytics: e.target.checked }
+							}))}
+							className="w-4 h-4 text-accent-600 bg-white/5 border-white/20 rounded focus:ring-accent-500"
+						/>
+						<span className="text-sm font-medium">Enable Analytics</span>
+					</label>
 				</div>
 			</motion.div>
 

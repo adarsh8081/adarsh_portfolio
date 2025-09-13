@@ -97,44 +97,6 @@ export function usePortfolioTracking() {
 	};
 }
 
-// Hook for tracking chatbot interactions
-export function useChatbotTracking() {
-	const trackChatbotOpen = () => {
-		analytics.trackChatbotEvent('chatbot_opened');
-	};
-
-	const trackChatbotClose = () => {
-		analytics.trackChatbotEvent('chatbot_closed');
-	};
-
-	const trackChatbotMessage = (messageType: 'user' | 'bot', messageLength: number) => {
-		analytics.trackChatbotEvent('chatbot_message', {
-			message_type: messageType,
-			message_length: messageLength,
-		});
-	};
-
-	const trackChatbotVoiceToggle = (enabled: boolean) => {
-		analytics.trackChatbotEvent('chatbot_voice_toggled', {
-			voice_enabled: enabled,
-		});
-	};
-
-	const trackChatbotError = (errorType: string, errorMessage: string) => {
-		analytics.trackChatbotEvent('chatbot_error', {
-			error_type: errorType,
-			error_message: errorMessage,
-		});
-	};
-
-	return {
-		trackChatbotOpen,
-		trackChatbotClose,
-		trackChatbotMessage,
-		trackChatbotVoiceToggle,
-		trackChatbotError,
-	};
-}
 
 // Hook for tracking admin actions
 export function useAdminTracking() {

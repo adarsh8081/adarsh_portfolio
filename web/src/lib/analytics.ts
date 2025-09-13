@@ -171,14 +171,6 @@ class AnalyticsService {
 		});
 	}
 
-	// Track chatbot interactions
-	trackChatbotEvent(eventName: string, properties?: Record<string, string | number | boolean>) {
-		this.trackEvent({
-			name: eventName,
-			category: 'Chatbot',
-			properties,
-		});
-	}
 
 	// Track admin actions
 	trackAdminEvent(eventName: string, properties?: Record<string, string | number | boolean>) {
@@ -212,8 +204,6 @@ export function useAnalytics() {
 		trackEvent: (event: AnalyticsEvent) => analytics.trackEvent(event),
 		trackPortfolioEvent: (eventName: string, properties?: Record<string, string | number | boolean>) => 
 			analytics.trackPortfolioEvent(eventName, properties),
-		trackChatbotEvent: (eventName: string, properties?: Record<string, string | number | boolean>) => 
-			analytics.trackChatbotEvent(eventName, properties),
 		trackAdminEvent: (eventName: string, properties?: Record<string, string | number | boolean>) => 
 			analytics.trackAdminEvent(eventName, properties),
 		identifyUser: (userId: string, properties?: Record<string, string | number | boolean>) => 

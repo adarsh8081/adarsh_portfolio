@@ -9,14 +9,12 @@ import { AchievementsManager } from "./achievements-manager";
 import { TimelineManager } from "./timeline-manager";
 import { UsersManager } from "./users-manager";
 import { SettingsPanel } from "./settings-panel";
-import { ChatbotManager } from "./chatbot-manager";
 import { AnalyticsDashboard } from "./analytics-dashboard";
 import { BlogManager } from "./blog-manager";
 import { ServicesManager } from "./services-manager";
 import { SkillsManager } from "./skills-manager";
 import { 
 	BarChart3, 
-	Bot, 
 	Settings, 
 	Users, 
 	Award, 
@@ -28,7 +26,7 @@ import {
 	Bell
 } from "lucide-react";
 
-type TabType = "overview" | "projects" | "blog" | "services" | "skills" | "testimonials" | "achievements" | "timeline" | "users" | "chatbot" | "analytics" | "settings";
+type TabType = "overview" | "projects" | "blog" | "services" | "skills" | "testimonials" | "achievements" | "timeline" | "users" | "analytics" | "settings";
 
 interface DashboardStats {
 	projects: number;
@@ -194,7 +192,6 @@ export function EnhancedDashboard() {
 		{ id: "achievements" as TabType, label: "Achievements", icon: Award, count: stats.achievements },
 		{ id: "timeline" as TabType, label: "Timeline", icon: Calendar, count: stats.timeline },
 		{ id: "users" as TabType, label: "Users", icon: Users, count: stats.users },
-		{ id: "chatbot" as TabType, label: "AI Chatbot", icon: Bot, count: 0 },
 		{ id: "analytics" as TabType, label: "Analytics", icon: TrendingUp, count: 0 },
 		{ id: "settings" as TabType, label: "Settings", icon: Settings, count: 0 },
 	];
@@ -219,8 +216,6 @@ export function EnhancedDashboard() {
 				return <TimelineManager onUpdate={fetchAllStats} />;
 			case "users":
 				return <UsersManager onUpdate={fetchAllStats} />;
-			case "chatbot":
-				return <ChatbotManager />;
 			case "analytics":
 				return <AnalyticsDashboard />;
 			case "settings":

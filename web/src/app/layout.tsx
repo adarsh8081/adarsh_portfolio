@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 // import { ThemeToggle } from "@/components/theme-toggle";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ChatbotWidget } from "@/components/chatbot";
 import { ScrollProvider } from "@/components/scroll-provider";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { Analytics } from "@vercel/analytics/react";
@@ -74,7 +73,6 @@ export default function RootLayout({
                   <Header />
                   {children}
                   <Footer />
-                  <ChatbotWidget />
                   <CustomCursor />
                   <Analytics />
                   <SpeedInsights />

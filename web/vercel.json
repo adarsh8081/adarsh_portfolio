@@ -6,7 +6,6 @@
   "devCommand": "npm run dev",
   "env": {
     "NEXT_PUBLIC_API_URL": "@api_url",
-    "NEXT_PUBLIC_CHATBOT_URL": "@chatbot_url"
   },
   "functions": {
     "src/app/api/**/*.ts": {
