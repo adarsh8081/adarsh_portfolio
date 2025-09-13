@@ -8,7 +8,7 @@ If you want to deploy just the frontend to Vercel and host the backend elsewhere
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click **"New Project"**
-3. Import your GitHub repository: `https://github.com/adarsh8081/PortFolio.git`
+3. Import your GitHub repository: `https://github.com/adarsh8081/adarsh_portfolio.git`
 4. Configure the project:
    - **Framework Preset**: Next.js
    - **Root Directory**: `web`

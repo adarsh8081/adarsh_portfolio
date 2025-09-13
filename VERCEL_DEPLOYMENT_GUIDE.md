@@ -36,7 +36,7 @@ Choose one of these cloud database services:
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click **"New Project"**
-3. Import your GitHub repository: `https://github.com/adarsh8081/PortFolio.git`
+3. Import your GitHub repository: `https://github.com/adarsh8081/adarsh_portfolio.git`
 4. Configure the project:
    - **Framework Preset**: Other
    - **Root Directory**: `.` (leave empty)
