@@ -1,0 +1,72 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="quantumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="quantumGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.2" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#quantumGradient)"/>
+  
+  <!-- Quantum Circuit -->
+  <g transform="translate(50,80)">
+    <!-- Quantum Gates -->
+    <rect x="0" y="0" width="20" height="20" fill="url(#quantumGlow)" rx="3"/>
+    <text x="10" y="15" text-anchor="middle" fill="white" font-size="12" font-family="Arial">H</text>
+    
+    <rect x="50" y="0" width="20" height="20" fill="url(#quantumGlow)" rx="3"/>
+    <text x="60" y="15" text-anchor="middle" fill="white" font-size="12" font-family="Arial">X</text>
+    
+    <rect x="100" y="0" width="20" height="20" fill="url(#quantumGlow)" rx="3"/>
+    <text x="110" y="15" text-anchor="middle" fill="white" font-size="12" font-family="Arial">Z</text>
+    
+    <rect x="150" y="0" width="20" height="20" fill="url(#quantumGlow)" rx="3"/>
+    <text x="160" y="15" text-anchor="middle" fill="white" font-size="12" font-family="Arial">CNOT</text>
+    
+    <!-- Quantum States -->
+    <circle cx="10" cy="40" r="8" fill="url(#quantumGlow)"/>
+    <text x="10" y="45" text-anchor="middle" fill="white" font-size="10" font-family="Arial">|0⟩</text>
+    
+    <circle cx="60" cy="40" r="8" fill="url(#quantumGlow)"/>
+    <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-family="Arial">|1⟩</text>
+    
+    <circle cx="110" cy="40" r="8" fill="url(#quantumGlow)"/>
+    <text x="110" y="45" text-anchor="middle" fill="white" font-size="10" font-family="Arial">|+⟩</text>
+    
+    <circle cx="160" cy="40" r="8" fill="url(#quantumGlow)"/>
+    <text x="160" y="45" text-anchor="middle" fill="white" font-size="10" font-family="Arial">|ψ⟩</text>
+    
+    <!-- Quantum Entanglement -->
+    <path d="M10,48 Q85,70 160,48" stroke="#00d4ff" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M60,48 Q85,60 110,48" stroke="#00d4ff" stroke-width="2" fill="none" opacity="0.4"/>
+  </g>
+  
+  <!-- Workshop Content -->
+  <rect x="50" y="150" width="300" height="80" fill="white" opacity="0.9" rx="10"/>
+  <text x="200" y="170" text-anchor="middle" fill="#1a1a2e" font-size="16" font-family="Arial" font-weight="bold">Quantum Computing Workshop</text>
+  
+  <!-- Workshop Stats -->
+  <rect x="70" y="180" width="60" height="40" fill="#ecf0f1" rx="5"/>
+  <text x="100" y="195" text-anchor="middle" fill="#00d4ff" font-size="14" font-family="Arial" font-weight="bold">50+</text>
+  <text x="100" y="210" text-anchor="middle" fill="#1a1a2e" font-size="10" font-family="Arial">Students</text>
+  
+  <rect x="150" y="180" width="60" height="40" fill="#ecf0f1" rx="5"/>
+  <text x="180" y="195" text-anchor="middle" fill="#00d4ff" font-size="14" font-family="Arial" font-weight="bold">Qiskit</text>
+  <text x="180" y="210" text-anchor="middle" fill="#1a1a2e" font-size="10" font-family="Arial">Framework</text>
+  
+  <rect x="230" y="180" width="60" height="40" fill="#ecf0f1" rx="5"/>
+  <text x="260" y="195" text-anchor="middle" fill="#00d4ff" font-size="14" font-family="Arial" font-weight="bold">Algorithms</text>
+  <text x="260" y="210" text-anchor="middle" fill="#1a1a2e" font-size="10" font-family="Arial">Quantum</text>
+  
+  <!-- Quantum Symbol -->
+  <circle cx="350" cy="50" r="20" fill="url(#quantumGlow)"/>
+  <text x="350" y="58" text-anchor="middle" fill="white" font-size="20" font-family="Arial">Ψ</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-size="20" font-family="Arial" font-weight="bold">Quantum Computing Workshop</text>
+</svg>

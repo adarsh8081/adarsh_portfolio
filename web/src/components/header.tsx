@@ -28,7 +28,7 @@ export function Header() {
 			<div className="container-safe flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center">
 					<img 
-						src="/logo.svg" 
+						src="/web/logo.svg" 
 						alt="Adarsh Logo" 
 						width={60} 
 						height={60}

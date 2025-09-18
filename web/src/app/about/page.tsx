@@ -163,7 +163,7 @@ export default function AboutPage() {
 						{/* High-quality background image */}
 						<div className="absolute inset-0 bg-slate-800">
 						<img 
-							src="/images/IMG-20250909-WA0009.jpg" 
+							src="/web/images/IMG-20250909-WA0009.jpg" 
 							alt="Adarsh Kumar professional portrait" 
 							className="w-full h-full object-cover object-center"
 							style={{

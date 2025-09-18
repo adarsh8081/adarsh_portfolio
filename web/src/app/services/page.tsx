@@ -12,7 +12,7 @@ const services = [
 		title: "Web Development",
 		description: "Full-stack web applications using modern frameworks like React, Next.js, Node.js, and more. From concept to deployment.",
 		icon: Code,
-		image: "/images/web-development.jpg",
+		image: "/web/images/web-development.jpg",
 		features: [
 			"Responsive & Mobile-First Design",
 			"Performance Optimization",
@@ -27,7 +27,7 @@ const services = [
 		title: "AI/ML Solutions",
 		description: "Custom AI and machine learning solutions including model development, training, and deployment for real-world applications.",
 		icon: Brain,
-		image: "/images/ai-ml-solutions.jpg",
+		image: "/web/images/ai-ml-solutions.jpg",
 		features: [
 			"Custom ML Model Development",
 			"Data Analysis & Processing",
@@ -42,7 +42,7 @@ const services = [
 		title: "UI/UX Design",
 		description: "Creative and user-centered design solutions that enhance user experience and drive engagement across all platforms.",
 		icon: Palette,
-		image: "/images/ui-ux-design.jpg",
+		image: "/web/images/ui-ux-design.jpg",
 		features: [
 			"User Research & Analysis",
 			"Wireframing & Prototyping",
@@ -57,7 +57,7 @@ const services = [
 		title: "Performance Optimization",
 		description: "Optimize your existing applications for better speed, scalability, and user experience with advanced techniques.",
 		icon: Zap,
-		image: "/images/performance-optimization.jpg",
+		image: "/web/images/performance-optimization.jpg",
 		features: [
 			"Code Review & Refactoring",
 			"Database Optimization",
@@ -72,7 +72,7 @@ const services = [
 		title: "Technical Writing",
 		description: "High-quality technical documentation, tutorials, and content that makes complex topics accessible to everyone.",
 		icon: MessageSquare,
-		image: "/images/technical-writing.jpg",
+		image: "/web/images/technical-writing.jpg",
 		features: [
 			"Technical Documentation",
 			"API Documentation",

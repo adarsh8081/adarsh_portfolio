@@ -1,0 +1,62 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lstmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#lstmGradient)"/>
+  
+  <!-- Neural Network Visualization -->
+  <circle cx="80" cy="80" r="15" fill="white" opacity="0.9"/>
+  <text x="80" y="85" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial">Input</text>
+  
+  <circle cx="150" cy="60" r="12" fill="white" opacity="0.8"/>
+  <circle cx="150" cy="100" r="12" fill="white" opacity="0.8"/>
+  <circle cx="150" cy="140" r="12" fill="white" opacity="0.8"/>
+  
+  <circle cx="220" cy="60" r="12" fill="white" opacity="0.8"/>
+  <circle cx="220" cy="100" r="12" fill="white" opacity="0.8"/>
+  <circle cx="220" cy="140" r="12" fill="white" opacity="0.8"/>
+  
+  <circle cx="290" cy="80" r="15" fill="white" opacity="0.9"/>
+  <text x="290" y="85" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial">Output</text>
+  
+  <!-- Connections -->
+  <line x1="95" y1="80" x2="138" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="95" y1="80" x2="138" y2="100" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="95" y1="80" x2="138" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
+  
+  <line x1="162" y1="60" x2="208" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="162" y1="100" x2="208" y2="100" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="162" y1="140" x2="208" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
+  
+  <line x1="232" y1="60" x2="275" y2="80" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="232" y1="100" x2="275" y2="80" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="232" y1="140" x2="275" y2="80" stroke="white" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Energy Chart -->
+  <rect x="50" y="180" width="300" height="60" fill="white" opacity="0.9" rx="10"/>
+  <text x="200" y="200" text-anchor="middle" fill="#2c3e50" font-size="14" font-family="Arial" font-weight="bold">Energy Demand Prediction</text>
+  
+  <!-- Chart Line -->
+  <polyline points="70,230 120,220 170,210 220,200 270,190 320,180" 
+            fill="none" stroke="#f39c12" stroke-width="3"/>
+  
+  <!-- Data Points -->
+  <circle cx="70" cy="230" r="3" fill="#f39c12"/>
+  <circle cx="120" cy="220" r="3" fill="#f39c12"/>
+  <circle cx="170" cy="210" r="3" fill="#f39c12"/>
+  <circle cx="220" cy="200" r="3" fill="#f39c12"/>
+  <circle cx="270" cy="190" r="3" fill="#f39c12"/>
+  <circle cx="320" cy="180" r="3" fill="#f39c12"/>
+  
+  <!-- Accuracy Badge -->
+  <rect x="320" y="30" width="60" height="30" fill="white" opacity="0.9" rx="15"/>
+  <text x="350" y="50" text-anchor="middle" fill="#f39c12" font-size="12" font-family="Arial" font-weight="bold">85%</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-size="20" font-family="Arial" font-weight="bold">LSTM Energy Predictor</text>
+</svg>

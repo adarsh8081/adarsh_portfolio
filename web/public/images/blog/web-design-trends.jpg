@@ -1,0 +1,73 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be185d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#fdf2f8;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Floating design elements -->
+  <g transform="translate(100, 80)">
+    <circle cx="0" cy="0" r="20" fill="#ffffff" opacity="0.3"/>
+    <circle cx="0" cy="0" r="10" fill="#ec4899" opacity="0.4"/>
+  </g>
+  <g transform="translate(650, 120)">
+    <rect x="0" y="0" width="25" height="25" fill="#ffffff" opacity="0.2" transform="rotate(45 12.5 12.5)"/>
+  </g>
+  
+  <!-- Main card -->
+  <rect x="100" y="150" width="600" height="200" rx="20" fill="url(#card)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- UI/UX elements -->
+  <g transform="translate(200, 200)">
+    <!-- Mobile mockup -->
+    <rect x="0" y="0" width="40" height="70" rx="8" fill="#1f2937" stroke="#374151" stroke-width="2"/>
+    <rect x="2" y="2" width="36" height="66" rx="6" fill="#ffffff"/>
+    
+    <!-- Screen content -->
+    <rect x="4" y="4" width="32" height="62" rx="4" fill="#f9fafb"/>
+    <rect x="6" y="6" width="28" height="12" rx="2" fill="#ec4899" opacity="0.8"/>
+    <rect x="6" y="22" width="20" height="6" rx="1" fill="#6b7280" opacity="0.6"/>
+    <rect x="6" y="32" width="16" height="6" rx="1" fill="#6b7280" opacity="0.6"/>
+    <rect x="6" y="42" width="24" height="6" rx="1" fill="#6b7280" opacity="0.6"/>
+    <rect x="6" y="52" width="18" height="6" rx="1" fill="#6b7280" opacity="0.6"/>
+  </g>
+  
+  <!-- Design tools -->
+  <g transform="translate(400, 180)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+    
+    <!-- Color palette -->
+    <rect x="20" y="20" width="20" height="20" rx="3" fill="#ec4899"/>
+    <rect x="50" y="20" width="20" height="20" rx="3" fill="#8b5cf6"/>
+    <rect x="80" y="20" width="20" height="20" rx="3" fill="#06b6d4"/>
+    <rect x="110" y="20" width="20" height="20" rx="3" fill="#10b981"/>
+    <rect x="140" y="20" width="20" height="20" rx="3" fill="#f59e0b"/>
+    
+    <!-- Typography -->
+    <text x="20" y="60" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937">Typography</text>
+    <text x="20" y="80" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Headings & Body Text</text>
+    
+    <!-- Icons -->
+    <circle cx="30" cy="100" r="8" fill="#ec4899" opacity="0.8"/>
+    <rect x="50" y="92" width="16" height="16" rx="2" fill="#8b5cf6" opacity="0.8"/>
+    <polygon points="80,100 85,92 90,100 85,108" fill="#06b6d4" opacity="0.8"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">UI/UX Design</text>
+  <text x="400" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#64748b">Beautiful & intuitive experiences</text>
+  
+  <!-- Decorative elements -->
+  <rect x="120" y="170" width="4" height="30" fill="#ec4899" opacity="0.6"/>
+  <rect x="120" y="170" width="30" height="4" fill="#ec4899" opacity="0.6"/>
+  <rect x="650" y="170" width="4" height="30" fill="#be185d" opacity="0.6"/>
+  <rect x="636" y="170" width="30" height="4" fill="#be185d" opacity="0.6"/>
+</svg>

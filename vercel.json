@@ -8,6 +8,14 @@
   ],
   "routes": [
     {
+      "src": "/images/(.*)",
+      "dest": "/web/images/$1"
+    },
+    {
+      "src": "/logo.svg",
+      "dest": "/web/logo.svg"
+    },
+    {
       "src": "/(.*)",
       "dest": "/web/$1"
     }
