@@ -12,15 +12,15 @@ export function Hero3D() {
 	const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
 	return (
-		<section ref={ref} className="relative h-[100vh] flex items-center overflow-hidden">
+		<section ref={ref} className="relative h-[100vh] flex items-center justify-center overflow-hidden">
 			{/* Enhanced 3D Background */}
 			<Background3DWrapper intensity={1.2} />
 			
 			{/* Content */}
-			<div className="container-safe relative z-10">
+			<div className="container-safe relative z-10 flex justify-center">
 				<motion.div
 					style={{ y, opacity }}
-					className="glass rounded-3xl p-8 sm:p-12 max-w-4xl border border-white/20 dark:border-white/10 backdrop-blur-xl"
+					className="glass rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto border border-white/20 dark:border-white/10 backdrop-blur-xl"
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, ease: "easeOut" }}
