@@ -162,17 +162,13 @@ export default function AboutPage() {
 					<div className="relative w-full h-full">
 						{/* High-quality background image */}
 						<div className="absolute inset-0 bg-slate-800">
-						<Image 
+						<img 
 							src="/images/IMG-20250909-WA0009.jpg" 
 							alt="Adarsh Kumar professional portrait" 
-							fill
-							priority
-							className="object-cover object-center"
+							className="w-full h-full object-cover object-center"
 							style={{
 								filter: 'brightness(0.8) contrast(1.1) saturate(1.1)'
 							}}
-							sizes="(max-width: 768px) 100vw, 50vw"
-							quality={90}
 						/>
 						</div>
 						{/* Elegant overlay */}

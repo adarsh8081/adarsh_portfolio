@@ -59,11 +59,10 @@ export function BlogList() {
 							>
 								<Link href={`/blog/${post.slug}`} className="block">
 									<div className="relative aspect-[16/10] overflow-hidden">
-										<Image 
+										<img 
 											src={post.coverImage} 
 											alt={post.title} 
-											fill 
-											className="object-cover transition-transform duration-500 group-hover:scale-105" 
+											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
 										/>
 										<div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full bg-accent-500 text-white text-xs font-medium">
 											<Star className="w-3 h-3 fill-current" />
@@ -136,11 +135,10 @@ export function BlogList() {
 							>
 								<Link href={`/blog/${post.slug}`} className="block">
 									<div className="relative aspect-[16/10] overflow-hidden">
-										<Image 
+										<img 
 											src={post.coverImage} 
 											alt={post.title} 
-											fill 
-											className="object-cover transition-transform duration-500 group-hover:scale-105" 
+											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
 										/>
 									</div>
 									<div className="p-6">
