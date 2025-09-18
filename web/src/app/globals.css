@@ -24,6 +24,44 @@
 	@apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Custom gradient utilities */
+.bg-gradient-radial {
+	background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Mobile touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+	/* Disable hover effects on mobile */
+	*:hover {
+		transform: none !important;
+	}
+	
+	/* Ensure proper touch scrolling */
+	html, body {
+		-webkit-overflow-scrolling: touch;
+		overflow-scrolling: touch;
+	}
+	
+	/* Prevent touch callouts */
+	* {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	/* Allow text selection in input fields */
+	input, textarea {
+		-webkit-user-select: text;
+		-khtml-user-select: text;
+		-moz-user-select: text;
+		-ms-user-select: text;
+		user-select: text;
+	}
+}
+
 /* Mobile-first responsive text */
 .responsive-text-xs {
 	@apply text-xs sm:text-sm;
@@ -320,6 +358,59 @@ html.lenis body {
 	}
 }
 
+/* Performance optimizations */
+* {
+	will-change: auto;
+}
+
+/* Optimize animations for better performance */
+.motion-safe\:animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/* Optimize scrolling performance */
+.smooth-scroll {
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Reduce layout shifts */
+.layout-stable {
+	contain: layout style paint;
+}
+
+/* Optimize images */
+img {
+	content-visibility: auto;
+}
+
+/* Optimize text rendering */
+body {
+	text-rendering: optimizeSpeed;
+	font-smooth: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Optimize motion for better performance */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 /* Typography utilities */
 .font-heading {
 	font-family: var(--font-heading);
@@ -406,4 +497,217 @@ button, a, [role="button"], [tabindex], input, select, textarea {
 	* {
 		cursor: auto !important;
 	}
+}
+
+/* Enhanced Timeline Styles */
+.timeline-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.timeline-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg, transparent, var(--accent-500), transparent);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover::before {
+	opacity: 1;
+}
+
+/* Timeline dot animations */
+.timeline-dot {
+	position: relative;
+	overflow: hidden;
+}
+
+.timeline-dot::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: radial-gradient(circle, var(--accent-400), transparent);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s ease;
+}
+
+.timeline-dot:hover::after {
+	width: 100px;
+	height: 100px;
+	opacity: 0.3;
+}
+
+/* Mobile timeline adjustments */
+@media (max-width: 768px) {
+	.timeline-mobile {
+		flex-direction: column !important;
+		text-align: left !important;
+	}
+	
+	.timeline-mobile .timeline-content {
+		width: 100% !important;
+		padding: 0 !important;
+		margin-top: 2rem;
+	}
+	
+	.timeline-mobile .timeline-dot {
+		position: relative !important;
+		left: auto !important;
+		transform: none !important;
+		margin: 0 auto 1rem auto;
+	}
+}
+
+/* Enhanced glass morphism for timeline cards */
+.timeline-glass {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .timeline-glass {
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Floating animation for timeline elements */
+@keyframes float {
+	0%, 100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.timeline-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.timeline-float:nth-child(even) {
+	animation-delay: -3s;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.timeline-gradient-text {
+	background: linear-gradient(-45deg, var(--accent-600), var(--accent-400), var(--accent-300), var(--accent-500));
+	background-size: 400% 400%;
+	animation: gradient-shift 3s ease infinite;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Enhanced Skills Section Styles */
+.skills-progress-bar {
+	position: relative;
+	overflow: hidden;
+}
+
+.skills-progress-bar::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+	animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		left: -100%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+.skills-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.skills-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg, transparent, var(--accent-500), transparent);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.skills-card:hover::before {
+	opacity: 1;
+}
+
+/* Skill level indicators */
+.skill-expert {
+	color: var(--accent-500);
+}
+
+.skill-advanced {
+	color: var(--accent-400);
+}
+
+.skill-intermediate {
+	color: var(--accent-300);
+}
+
+.skill-learning {
+	color: var(--accent-200);
+}
+
+/* Enhanced progress bar animations */
+@keyframes progress-fill {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: var(--target-width);
+	}
+}
+
+.skills-progress-animated {
+	animation: progress-fill 1.5s ease-out forwards;
+}
+
+/* Floating skill cards */
+.skills-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.skills-float:nth-child(even) {
+	animation-delay: -3s;
+}
+
+.skills-float:nth-child(3n) {
+	animation-delay: -1.5s;
 }

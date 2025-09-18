@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import clsx from "clsx";
 import { allTags, projects as allProjects, type Project } from "@/data/projects";
 import { X, ExternalLink, Github, Star } from "lucide-react";
@@ -36,13 +35,10 @@ function ProjectModal({ project, isOpen, onClose }: { project: Project | null; i
 								<X className="w-5 h-5" />
 							</button>
 							<div className="relative aspect-[16/9]">
-								<Image 
+								<img 
 									src={project.image} 
 									alt={project.title} 
-									fill
-									className="object-cover rounded-t-3xl"
-									priority
-									sizes="(max-width: 768px) 100vw, 80vw"
+									className="w-full h-full object-cover rounded-t-3xl"
 								/>
 								{project.featured && (
 									<div className="absolute top-4 left-4 flex items-center gap-1 px-3 py-1 rounded-full bg-accent-500 text-white text-sm font-medium">
@@ -141,13 +137,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 			onClick={onClick}
 		>
 			<div className="relative aspect-[16/10] bg-gray-200 dark:bg-gray-800">
-				<Image 
+				<img 
 					src={project.image} 
 					alt={project.title} 
-					fill
-					className="object-cover transition-transform duration-500 group-hover:scale-105"
-					priority={project.featured}
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
 				{project.featured && (
 					<div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full bg-accent-500 text-white text-xs font-medium">

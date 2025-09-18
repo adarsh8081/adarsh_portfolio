@@ -13,18 +13,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if email configuration is available
+    const emailUser = process.env.EMAIL_USER || 'adarsh.kumar.808168@gmail.com';
+    const emailPass = process.env.EMAIL_PASS || process.env.APP_PASSWORD;
+
+    if (!emailPass || emailPass === 'your-app-password-here') {
+      console.error('Email configuration missing: EMAIL_PASS not set or using placeholder value');
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact me directly at adarsh.kumar.808168@gmail.com' },
+        { status: 503 }
+      );
+    }
+
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER || 'adarsh.kumar.808168@gmail.com',
-        pass: process.env.EMAIL_PASS || process.env.APP_PASSWORD,
+        user: emailUser,
+        pass: emailPass,
       },
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'adarsh.kumar.808168@gmail.com',
+      from: emailUser,
       to: 'adarsh.kumar.808168@gmail.com',
       subject: `Portfolio Contact: ${subject}`,
       html: `
@@ -58,6 +70,8 @@ export async function POST(request: NextRequest) {
     };
 
     // Send email
+    console.log('Attempting to send email with user:', emailUser);
+    console.log('Password length:', emailPass ? emailPass.length : 'undefined');
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json(
@@ -67,8 +81,17 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error sending email:', error);
+    
+    // Check if it's an authentication error
+    if (error instanceof Error && error.message.includes('authentication')) {
+      return NextResponse.json(
+        { error: 'Email authentication failed. Please check the Gmail App Password configuration.' },
+        { status: 503 }
+      );
+    }
+    
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'Failed to send email. Please contact me directly at adarsh.kumar.808168@gmail.com' },
       { status: 500 }
     );
   }

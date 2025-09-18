@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import clsx from "clsx";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/logo";
 
 const navItems = [
 	{ href: "/", label: "Home" },
@@ -22,19 +22,18 @@ const navItems = [
 export function Header() {
 	const pathname = usePathname();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const isHomePage = pathname === "/";
 
 	return (
-		<header className="sticky top-0 z-40 backdrop-blur-md bg-white/60 dark:bg-black/40 border-b border-black/5 dark:border-white/10">
+		<header className={clsx(
+			"sticky top-0 z-40 transition-all duration-300",
+			isHomePage 
+				? "backdrop-blur-sm bg-white/20 dark:bg-black/20 border-b border-white/10 dark:border-white/5"
+				: "backdrop-blur-md bg-white/60 dark:bg-black/40 border-b border-black/5 dark:border-white/10"
+		)}>
 			<div className="container-safe flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center">
-					<Image 
-						src="/web/logo.svg" 
-						alt="Adarsh Logo" 
-						width={60} 
-						height={60}
-						className="w-12 h-12 sm:w-14 sm:h-14"
-						priority
-					/>
+					<Logo />
 				</Link>
 				<div className="flex items-center gap-4">
 					{/* Desktop Navigation */}
@@ -46,8 +45,12 @@ export function Header() {
 								className={clsx(
 									"px-3 py-2 text-sm rounded-full transition-colors",
 									pathname === item.href
-										? "bg-black/5 dark:bg-white/10"
-										: "hover:bg-black/5 dark:hover:bg-white/10"
+										? isHomePage 
+											? "bg-white/20 text-white"
+											: "bg-black/5 dark:bg-white/10"
+										: isHomePage
+											? "text-white/80 hover:text-white hover:bg-white/10"
+											: "hover:bg-black/5 dark:hover:bg-white/10"
 								)}
 							>
 								{item.label}
@@ -58,7 +61,12 @@ export function Header() {
 					{/* Mobile Menu Button */}
 					<button
 						onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-						className="md:hidden p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
+						className={clsx(
+							"md:hidden p-2 rounded-lg transition-colors",
+							isHomePage 
+								? "text-white hover:bg-white/10"
+								: "hover:bg-black/5 dark:hover:bg-white/10"
+						)}
 					>
 						<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							{isMobileMenuOpen ? (
@@ -75,7 +83,12 @@ export function Header() {
 			
 			{/* Mobile Navigation */}
 			{isMobileMenuOpen && (
-				<div className="md:hidden border-t border-black/5 dark:border-white/10 bg-white/95 dark:bg-black/95 backdrop-blur-sm">
+				<div className={clsx(
+					"md:hidden border-t backdrop-blur-sm",
+					isHomePage 
+						? "border-white/10 bg-black/80"
+						: "border-black/5 dark:border-white/10 bg-white/95 dark:bg-black/95"
+				)}>
 					<nav className="container-safe py-4 space-y-2">
 						{navItems.map((item) => (
 							<Link
@@ -85,8 +98,12 @@ export function Header() {
 								className={clsx(
 									"block px-4 py-3 text-sm rounded-lg transition-colors",
 									pathname === item.href
-										? "bg-black/5 dark:bg-white/10"
-										: "hover:bg-black/5 dark:hover:bg-white/10"
+										? isHomePage 
+											? "bg-white/20 text-white"
+											: "bg-black/5 dark:bg-white/10"
+										: isHomePage
+											? "text-white/80 hover:text-white hover:bg-white/10"
+											: "hover:bg-black/5 dark:hover:bg-white/10"
 								)}
 							>
 								{item.label}

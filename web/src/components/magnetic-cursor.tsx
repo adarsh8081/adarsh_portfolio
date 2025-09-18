@@ -73,8 +73,24 @@ export function CustomCursor() {
 	const [cursorState, setCursorState] = useState<'default' | 'text' | 'interactive' | 'button'>('default');
 	const [isHovering, setIsHovering] = useState(false);
 	const [isClicking, setIsClicking] = useState(false);
+	const [isDesktop, setIsDesktop] = useState(false);
 
 	useEffect(() => {
+		// Check if device supports mouse (desktop)
+		const checkIsDesktop = () => {
+			const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+			setIsDesktop(hasMouse);
+		};
+
+		checkIsDesktop();
+		window.addEventListener("resize", checkIsDesktop);
+
+		// Don't add event listeners on mobile
+		if (!isDesktop) {
+			return () => {
+				window.removeEventListener("resize", checkIsDesktop);
+			};
+		}
 		const updatePosition = (e: MouseEvent) => {
 			setPosition({ x: e.clientX, y: e.clientY });
 		};
@@ -183,9 +199,10 @@ export function CustomCursor() {
 			document.removeEventListener("mousedown", handleMouseDown);
 			document.removeEventListener("mouseup", handleMouseUp);
 		};
-	}, []);
+	}, [isDesktop]);
 
-	if (!isVisible) return null;
+	// Don't render on mobile devices
+	if (!isDesktop || !isVisible) return null;
 
 	// Define cursor styles based on state
 	const getCursorStyle = () => {

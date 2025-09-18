@@ -163,7 +163,7 @@ export default function AboutPage() {
 						{/* High-quality background image */}
 						<div className="absolute inset-0 bg-slate-800">
 						<Image 
-							src="/web/images/IMG-20250909-WA0009.jpg" 
+							src="/images/IMG-20250909-WA0009.jpg" 
 							alt="Adarsh Kumar professional portrait" 
 							fill
 							priority
@@ -281,45 +281,137 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			{/* Timeline */}
-			<ScrollytellingSection className="py-16 bg-gradient-to-br from-accent-50/50 to-transparent dark:from-accent-900/20">
+			{/* Enhanced Timeline */}
+			<ScrollytellingSection className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-transparent dark:from-slate-900 dark:via-blue-900/20 dark:to-transparent">
 				<RevealOnScroll>
-					<div className="max-w-4xl mx-auto">
-						<h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--accent-600),var(--accent-400))]">
-							My Journey
-						</h2>
-						<div className="relative">
-							{/* Timeline Line */}
-							<div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-500 to-accent-300" />
-							
-							{timelineData.map((item, index) => (
-								<motion.div
-									key={item.year}
-									className="relative flex items-start gap-8 mb-12"
-									initial={{ opacity: 0, x: -50 }}
-									whileInView={{ opacity: 1, x: 0 }}
-									transition={{ duration: 0.6, delay: index * 0.1 }}
-									viewport={{ once: true }}
-								>
-									{/* Timeline Dot */}
-									<div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center text-2xl relative z-10 border-4 border-background">
-										{item.icon}
-									</div>
-									
-									{/* Content */}
-									<div className="flex-1 glass rounded-2xl p-6 border border-white/20 dark:border-white/10">
-										<div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-											<span className="text-2xl font-bold text-accent-600">{item.year}</span>
-											<span className="px-3 py-1 rounded-full text-sm font-medium bg-accent-100 dark:bg-accent-900 text-accent-700 dark:text-accent-300">
-												{item.highlight}
-											</span>
-										</div>
-										<h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-										<p className="text-muted-foreground">{item.description}</p>
-									</div>
-								</motion.div>
-							))}
+					<div className="max-w-6xl mx-auto px-4">
+						{/* Section Header */}
+						<div className="text-center mb-16">
+							<motion.h2 
+								className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--accent-600),var(--accent-400),var(--accent-300))]"
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8 }}
+								viewport={{ once: true }}
+							>
+								My Journey
+							</motion.h2>
+							<motion.p 
+								className="text-lg text-muted-foreground max-w-2xl mx-auto"
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.2 }}
+								viewport={{ once: true }}
+							>
+								A timeline of my growth, achievements, and the milestones that shaped my career in technology
+							</motion.p>
 						</div>
+
+						{/* Timeline Container */}
+						<div className="relative">
+							{/* Central Timeline Line */}
+							<div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-accent-500 via-accent-400 to-accent-300 rounded-full shadow-lg hidden md:block" />
+							
+							{/* Timeline Items */}
+							<div className="space-y-16 md:space-y-20">
+								{timelineData.map((item, index) => (
+									<motion.div
+										key={item.year}
+										className={`relative flex items-center timeline-mobile ${
+											index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+										} flex-col`}
+										initial={{ opacity: 0, y: 50 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.8, delay: index * 0.2 }}
+										viewport={{ once: true }}
+									>
+										{/* Timeline Dot */}
+										<div className="absolute left-1/2 transform -translate-x-1/2 z-20 timeline-dot hidden md:block">
+											<motion.div
+												className="w-20 h-20 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center text-3xl shadow-2xl border-4 border-background relative overflow-hidden timeline-float"
+												whileHover={{ scale: 1.1, rotate: 5 }}
+												transition={{ type: "spring", stiffness: 300 }}
+											>
+												{/* Animated background */}
+												<div className="absolute inset-0 bg-gradient-to-br from-accent-400 to-accent-600 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+												<span className="relative z-10">{item.icon}</span>
+												
+												{/* Glow effect */}
+												<div className="absolute inset-0 rounded-full bg-accent-400/30 blur-xl scale-150 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+											</motion.div>
+										</div>
+
+										{/* Mobile Timeline Dot */}
+										<div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center text-2xl shadow-2xl border-4 border-background relative overflow-hidden timeline-float md:hidden mb-4">
+											<span className="relative z-10">{item.icon}</span>
+											<div className="absolute inset-0 rounded-full bg-accent-400/30 blur-xl scale-150 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+										</div>
+
+										{/* Content Card */}
+										<div className={`w-full md:w-5/12 timeline-content ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'} text-center md:text-left`}>
+											<motion.div
+												className="group relative timeline-card"
+												whileHover={{ y: -5 }}
+												transition={{ type: "spring", stiffness: 300 }}
+											>
+												{/* Card Background */}
+												<div className="relative timeline-glass rounded-3xl p-6 md:p-8 shadow-2xl overflow-hidden">
+													{/* Gradient overlay */}
+													<div className="absolute inset-0 bg-gradient-to-br from-accent-50/50 to-transparent dark:from-accent-900/20 dark:to-transparent" />
+													
+													{/* Content */}
+													<div className="relative z-10">
+														{/* Year and Category */}
+														<div className={`flex items-center gap-3 mb-4 ${index % 2 === 0 ? 'md:justify-end justify-center' : 'md:justify-start justify-center'}`}>
+															<span className="text-2xl md:text-3xl font-bold timeline-gradient-text">
+																{item.year}
+															</span>
+															<span className="px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-semibold bg-gradient-to-r from-accent-100 to-accent-200 dark:from-accent-800 dark:to-accent-900 text-accent-700 dark:text-accent-300 shadow-lg">
+																{item.highlight}
+															</span>
+														</div>
+
+														{/* Title */}
+														<h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-slate-800 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
+															{item.title}
+														</h3>
+
+														{/* Description */}
+														<p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base md:text-lg">
+															{item.description}
+														</p>
+
+														{/* Decorative elements */}
+														<div className="absolute top-4 right-4 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-accent-200/30 to-accent-300/30 dark:from-accent-700/30 dark:to-accent-800/30 rounded-full blur-xl" />
+														<div className="absolute bottom-4 left-4 w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-blue-200/30 to-blue-300/30 dark:from-blue-700/30 dark:to-blue-800/30 rounded-full blur-lg" />
+													</div>
+												</div>
+
+												{/* Card shadow */}
+												<div className="absolute inset-0 bg-gradient-to-br from-accent-500/20 to-blue-500/20 rounded-3xl blur-xl -z-10 scale-105 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+											</motion.div>
+										</div>
+									</motion.div>
+								))}
+							</div>
+						</div>
+
+						{/* Bottom CTA */}
+						<motion.div 
+							className="text-center mt-16"
+							initial={{ opacity: 0, y: 30 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.5 }}
+							viewport={{ once: true }}
+						>
+							<Link href="/projects">
+								<button className="group relative px-8 py-4 bg-gradient-to-r from-accent-500 to-blue-500 rounded-full text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+									<span className="relative z-10">Explore My Projects</span>
+									<div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+									<div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
+								</button>
+							</Link>
+						</motion.div>
 					</div>
 				</RevealOnScroll>
 			</ScrollytellingSection>
@@ -384,30 +476,110 @@ export default function AboutPage() {
 				</RevealOnScroll>
 			</ScrollytellingSection>
 
-			{/* Values */}
-			<ScrollytellingSection className="py-16 bg-gradient-to-br from-accent-50/50 to-transparent dark:from-accent-900/20">
+			{/* Enhanced Core Values */}
+			<ScrollytellingSection className="py-20 bg-gradient-to-br from-slate-50 via-purple-50/30 to-transparent dark:from-slate-900 dark:via-purple-900/20 dark:to-transparent relative overflow-hidden">
+				{/* Background Effects */}
+				<div className="absolute inset-0">
+					<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse" />
+					<div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-accent-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+				</div>
+
 				<RevealOnScroll>
-					<div className="max-w-6xl mx-auto">
-						<h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--accent-600),var(--accent-400))]">
-							Core Values
-						</h2>
-						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div className="max-w-7xl mx-auto relative z-10">
+						{/* Section Header */}
+						<div className="text-center mb-16">
+							<motion.h2 
+								className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-[linear-gradient(135deg,var(--accent-600),var(--accent-400),var(--accent-300))]"
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8 }}
+								viewport={{ once: true }}
+							>
+								Core Values
+							</motion.h2>
+							<motion.p 
+								className="text-lg text-muted-foreground max-w-3xl mx-auto"
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: 0.2 }}
+								viewport={{ once: true }}
+							>
+								The principles that guide my work, shape my decisions, and drive my passion for creating meaningful impact
+							</motion.p>
+						</div>
+
+						{/* Values Grid */}
+						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 							{values.map((value, index) => (
 								<motion.div
 									key={value.value}
-									className="glass rounded-2xl p-6 border border-white/20 dark:border-white/10 hover:border-accent-500/30 transition-all duration-300"
-									initial={{ opacity: 0, y: 20 }}
+									className="group relative"
+									initial={{ opacity: 0, y: 50 }}
 									whileInView={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.6, delay: index * 0.1 }}
+									transition={{ duration: 0.8, delay: index * 0.15 }}
 									viewport={{ once: true }}
-									whileHover={{ scale: 1.05, y: -5 }}
+									whileHover={{ y: -10, scale: 1.02 }}
 								>
-									<div className="text-4xl mb-4">{value.icon}</div>
-									<h3 className="text-xl font-semibold mb-2">{value.value}</h3>
-									<p className="text-muted-foreground">{value.description}</p>
+									{/* Card Background */}
+									<div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden h-full">
+										{/* Gradient overlay */}
+										<div className="absolute inset-0 bg-gradient-to-br from-accent-50/30 to-transparent dark:from-accent-900/10 dark:to-transparent" />
+										
+										{/* Animated background pattern */}
+										<div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-200/20 to-transparent dark:from-accent-700/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+										<div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-200/20 to-transparent dark:from-blue-700/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
+
+										{/* Content */}
+										<div className="relative z-10 h-full flex flex-col">
+											{/* Icon Container */}
+											<motion.div 
+												className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-100 to-accent-200 dark:from-accent-800 dark:to-accent-900 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300"
+												whileHover={{ rotate: 10 }}
+												transition={{ type: "spring", stiffness: 300 }}
+											>
+												<span className="group-hover:scale-110 transition-transform duration-300">
+													{value.icon}
+												</span>
+											</motion.div>
+
+											{/* Title */}
+											<h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
+												{value.value}
+											</h3>
+
+											{/* Description */}
+											<p className="text-slate-600 dark:text-slate-300 leading-relaxed flex-grow">
+												{value.description}
+											</p>
+
+											{/* Bottom accent line */}
+											<div className="mt-6 h-1 bg-gradient-to-r from-accent-500 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+										</div>
+
+										{/* Hover glow effect */}
+										<div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+									</div>
+
+									{/* Card shadow */}
+									<div className="absolute inset-0 bg-gradient-to-br from-accent-500/20 to-blue-500/20 rounded-3xl blur-xl -z-10 scale-105 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 								</motion.div>
 							))}
 						</div>
+
+						{/* Bottom Quote */}
+						<motion.div 
+							className="text-center mt-16 max-w-4xl mx-auto"
+							initial={{ opacity: 0, y: 30 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.5 }}
+							viewport={{ once: true }}
+						>
+							<blockquote className="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-300 italic leading-relaxed">
+								&ldquo;These values aren&apos;t just words on a page—they&apos;re the foundation of how I approach every project, 
+								every collaboration, and every opportunity to make a positive impact through technology.&rdquo;
+							</blockquote>
+							<div className="mt-6 h-1 w-24 bg-gradient-to-r from-accent-500 to-blue-500 rounded-full mx-auto" />
+						</motion.div>
 					</div>
 				</RevealOnScroll>
 			</ScrollytellingSection>

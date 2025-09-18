@@ -12,6 +12,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Auth0Provider } from '@/components/auth0-provider';
 import { CustomCursor } from "@/components/magnetic-cursor";
 import { SWRProvider } from "@/components/swr-provider";
+import { PerformanceMonitor } from "@/components/performance-monitor";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -74,6 +75,7 @@ export default function RootLayout({
                   {children}
                   <Footer />
                   <CustomCursor />
+                  <PerformanceMonitor />
                   <Analytics />
                   <SpeedInsights />
                 </ScrollProvider>

@@ -1,0 +1,42 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo container with warm gradient background -->
+  <rect width="200" height="60" rx="12" fill="url(#warmGradient)" stroke="url(#warmBorder)" stroke-width="1"/>
+  
+  <!-- Icon/Logo symbol -->
+  <circle cx="30" cy="30" r="18" fill="url(#iconWarm)" stroke="white" stroke-width="2"/>
+  <text x="30" y="38" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">A</text>
+  
+  <!-- Main text -->
+  <text x="60" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Adarsh Kumar</text>
+  
+  <!-- Tagline -->
+  <text x="60" y="42" font-family="Arial, sans-serif" font-size="12" font-weight="normal" fill="url(#taglineWarm)">AI/ML Engineer & Creative Professional</text>
+  
+  <!-- Decorative accent -->
+  <rect x="60" y="35" width="120" height="1" fill="url(#accentWarm)" opacity="0.7"/>
+  
+  <defs>
+    <linearGradient id="warmGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c2d12;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="warmBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="taglineWarm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fde68a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentWarm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
