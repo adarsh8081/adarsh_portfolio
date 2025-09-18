@@ -36,10 +36,13 @@ function ProjectModal({ project, isOpen, onClose }: { project: Project | null; i
 								<X className="w-5 h-5" />
 							</button>
 							<div className="relative aspect-[16/9]">
-								<img 
+								<Image 
 									src={project.image} 
 									alt={project.title} 
-									className="w-full h-full object-cover rounded-t-3xl"
+									fill
+									className="object-cover rounded-t-3xl"
+									priority
+									sizes="(max-width: 768px) 100vw, 80vw"
 								/>
 								{project.featured && (
 									<div className="absolute top-4 left-4 flex items-center gap-1 px-3 py-1 rounded-full bg-accent-500 text-white text-sm font-medium">
@@ -138,10 +141,13 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 			onClick={onClick}
 		>
 			<div className="relative aspect-[16/10] bg-gray-200 dark:bg-gray-800">
-				<img 
+				<Image 
 					src={project.image} 
 					alt={project.title} 
-					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+					fill
+					className="object-cover transition-transform duration-500 group-hover:scale-105"
+					priority={project.featured}
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				/>
 				{project.featured && (
 					<div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full bg-accent-500 text-white text-xs font-medium">

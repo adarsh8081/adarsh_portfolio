@@ -14,10 +14,17 @@ const nextConfig: NextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
-    // Disable image optimization for Vercel to fix loading issues
-    unoptimized: true,
+    // Enable image optimization for Vercel
+    unoptimized: false,
     // Ensure proper image loading
     loader: 'default',
+    // Add image formats for better optimization
+    formats: ['image/webp', 'image/avif'],
+    // Optimize image loading
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Add minimum cache time for better performance
+    minimumCacheTTL: 60,
   },
   // Enable experimental features for better performance
   experimental: {

@@ -27,12 +27,13 @@ export function Header() {
 		<header className="sticky top-0 z-40 backdrop-blur-md bg-white/60 dark:bg-black/40 border-b border-black/5 dark:border-white/10">
 			<div className="container-safe flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center">
-					<img 
+					<Image 
 						src="/web/logo.svg" 
 						alt="Adarsh Logo" 
 						width={60} 
 						height={60}
 						className="w-12 h-12 sm:w-14 sm:h-14"
+						priority
 					/>
 				</Link>
 				<div className="flex items-center gap-4">

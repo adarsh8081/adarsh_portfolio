@@ -194,10 +194,13 @@ export default function ServicesPage() {
 									
 									<div className="relative mb-6">
 										<div className="relative aspect-[16/10] mb-4 rounded-2xl overflow-hidden">
-											<img 
+											<Image 
 												src={service.image} 
 												alt={service.title} 
-												className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+												fill
+												className="object-cover transition-transform duration-500 group-hover:scale-105" 
+												priority
+												sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 											/>
 											<div className="absolute inset-0 bg-black/20 flex items-center justify-center">
 												<div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center">
