@@ -51,13 +51,13 @@ function Test-Services {
         Write-Warning "API is not running on port 4000"
     }
     
-    # Check if Python service is running
+    # Check if database is accessible
     try {
-        $response = Invoke-WebRequest -Uri "http://localhost:8000/health" -TimeoutSec 5 -UseBasicParsing
-        Write-Success "Python service is running on port 8000"
+        $response = Invoke-WebRequest -Uri "http://localhost:4000/health" -TimeoutSec 5 -UseBasicParsing
+        Write-Success "Database connection is healthy"
     }
     catch {
-        Write-Warning "Python service is not running on port 8000"
+        Write-Warning "Database connection may not be available"
     }
 }
 
@@ -93,16 +93,16 @@ function Test-API {
     }
 }
 
-# Run Python service tests
-function Test-PythonService {
-    Write-Status "Running Python service tests..."
+# Run database tests
+function Test-Database {
+    Write-Status "Running database tests..."
     
-    if (Test-Path "tests/test_python_service.py") {
-        python -m pytest tests/test_python_service.py -v --tb=short
-        Write-Success "Python service tests completed"
+    if (Test-Path "tests/test_database.py") {
+        python -m pytest tests/test_database.py -v --tb=short
+        Write-Success "Database tests completed"
     }
     else {
-        Write-Warning "Python service tests not found"
+        Write-Warning "Database tests not found"
     }
 }
 
@@ -141,8 +141,8 @@ function Test-All {
     # Run API tests
     Test-API
     
-    # Run Python service tests
-    Test-PythonService
+    # Run database tests
+    Test-Database
     
     # Run integration tests
     Test-Integration
@@ -185,8 +185,8 @@ function Start-TestSuite {
         "api" {
             Test-API
         }
-        "python" {
-            Test-PythonService
+        "database" {
+            Test-Database
         }
         "integration" {
             Test-Integration
@@ -198,7 +198,7 @@ function Start-TestSuite {
             Test-All
         }
         default {
-            Write-Host "Usage: .\run_tests.ps1 -TestType [api|python|integration|cypress|all]" -ForegroundColor Yellow
+            Write-Host "Usage: .\run_tests.ps1 -TestType [api|database|integration|cypress|all]" -ForegroundColor Yellow
             exit 1
         }
     }

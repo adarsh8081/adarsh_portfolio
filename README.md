@@ -32,12 +32,11 @@ A comprehensive, modern portfolio website built with Next.js, Node.js, Python Fa
 - 🚀 Rate limiting and caching
 - 📝 CMS functionality
 
-### AI Service (Python FastAPI)
-- 🤖 AI-powered chatbot with RAG (Retrieval-Augmented Generation)
-- 🔍 Vector search with embeddings
-- 🎤 Text-to-Speech functionality
-- 🧠 Multiple LLM support (OpenAI, Gemini, Local)
-- 📚 Portfolio data integration
+### AI Features (Frontend)
+- 🔍 AI-powered search functionality
+- 🎨 Smart content recommendations
+- 📊 Intelligent analytics integration
+- 🎯 Dynamic content adaptation
 
 ### Testing
 - 🧪 Comprehensive test suite with Cypress (E2E)
@@ -65,13 +64,11 @@ A comprehensive, modern portfolio website built with Next.js, Node.js, Python Fa
 - **Testing**: Jest + Supertest
 - **Deployment**: Railway
 
-### AI Service
-- **Framework**: FastAPI (Python 3.11)
-- **ML Libraries**: Sentence Transformers, FAISS
-- **LLM Integration**: OpenAI, Google Gemini, Hugging Face
-- **TTS**: pyttsx3
-- **Testing**: pytest + httpx
-- **Deployment**: Railway
+### AI Features
+- **Search**: Intelligent content search
+- **Analytics**: Smart data insights
+- **Adaptation**: Dynamic content rendering
+- **Integration**: Seamless user experience
 
 ### DevOps
 - **Containerization**: Docker + Docker Compose
@@ -97,13 +94,9 @@ portfolio/
 │   │   ├── middleware/    # Express middleware
 │   │   └── prisma.ts      # Database client
 │   └── prisma/            # Database schema and migrations
-├── python/                 # Python AI Service
-│   ├── app/
-│   │   └── main.py        # FastAPI application
-│   └── database.py        # Database utilities
 ├── tests/                  # Comprehensive test suite
 │   ├── test_api.py        # API tests
-│   ├── test_python_service.py # Python service tests
+│   ├── test_database.py   # Database tests
 │   └── test_integration.py # Integration tests
 ├── docker-compose.yml      # Multi-service Docker setup
 ├── .github/workflows/      # CI/CD pipelines

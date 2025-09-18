@@ -51,29 +51,29 @@ class TestFrontendIntegration:
                 EC.presence_of_element_located((By.TAG_NAME, "body"))
             )
     
-    def test_chatbot_integration(self, driver):
-        """Test chatbot integration"""
+    def test_ai_search_integration(self, driver):
+        """Test AI search integration"""
         driver.get(TestConfig.get_frontend_url())
         
-        # Look for chatbot elements
+        # Look for AI search elements
         try:
-            chatbot_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='chat-input']"))
+            search_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='ai-search-input']"))
             )
             
-            # Test sending a message
-            chatbot_input.send_keys("Hello, tell me about your projects")
+            # Test search functionality
+            search_input.send_keys("portfolio projects")
             
-            send_button = driver.find_element(By.CSS_SELECTOR, "[data-testid='chat-send']")
-            send_button.click()
+            search_button = driver.find_element(By.CSS_SELECTOR, "[data-testid='search-button']")
+            search_button.click()
             
-            # Wait for response
-            WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='chat-response']"))
+            # Wait for results
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='search-results']"))
             )
             
         except Exception as e:
-            pytest.skip(f"Chatbot not available: {e}")
+            pytest.skip(f"AI search not available: {e}")
     
     def test_contact_form_integration(self, driver):
         """Test contact form integration"""
@@ -183,34 +183,34 @@ class TestEndToEndWorkflow:
         except Exception as e:
             pytest.skip(f"Contact page not available: {e}")
     
-    def test_chatbot_workflow(self, driver):
-        """Test chatbot workflow"""
+    def test_search_workflow(self, driver):
+        """Test search workflow"""
         driver.get(TestConfig.get_frontend_url())
         
         try:
-            # Find and interact with chatbot
-            chatbot_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='chat-input']"))
+            # Find and interact with search
+            search_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='ai-search-input']"))
             )
             
-            # Send multiple messages
-            messages = [
-                "Hello, tell me about your projects",
-                "What technologies do you use?",
-                "How can I contact you?"
+            # Test multiple searches
+            searches = [
+                "portfolio projects",
+                "technologies used",
+                "contact information"
             ]
             
-            for message in messages:
-                chatbot_input.clear()
-                chatbot_input.send_keys(message)
+            for search_term in searches:
+                search_input.clear()
+                search_input.send_keys(search_term)
                 
-                send_button = driver.find_element(By.CSS_SELECTOR, "[data-testid='chat-send']")
-                send_button.click()
+                search_button = driver.find_element(By.CSS_SELECTOR, "[data-testid='search-button']")
+                search_button.click()
                 
-                # Wait for response
-                WebDriverWait(driver, 30).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='chat-response']"))
+                # Wait for results
+                WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='search-results']"))
                 )
                 
         except Exception as e:
-            pytest.skip(f"Chatbot workflow not available: {e}")
+            pytest.skip(f"Search workflow not available: {e}")

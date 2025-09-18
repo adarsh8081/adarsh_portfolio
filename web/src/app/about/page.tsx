@@ -171,11 +171,8 @@ export default function AboutPage() {
 							style={{
 								filter: 'brightness(0.8) contrast(1.1) saturate(1.1)'
 							}}
-							onLoad={() => console.log('Background image loaded successfully')}
-							onError={(e) => {
-								console.error('Background image failed to load:', e);
-								console.log('Image src:', '/images/IMG-20250909-WA0009.jpg');
-							}}
+							sizes="(max-width: 768px) 100vw, 50vw"
+							quality={90}
 						/>
 						</div>
 						{/* Elegant overlay */}
@@ -209,6 +206,8 @@ export default function AboutPage() {
 										style={{
 											filter: 'brightness(1.1) contrast(1.05)'
 										}}
+										sizes="(max-width: 768px) 100px, 112px"
+										quality={90}
 									/>
 									</div>
 								</div>

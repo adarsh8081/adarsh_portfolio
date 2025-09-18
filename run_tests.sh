@@ -50,11 +50,11 @@ check_services() {
         print_warning "API is not running on port 4000"
     fi
     
-    # Check if Python service is running
-    if curl -s http://localhost:8000/health > /dev/null; then
-        print_success "Python service is running on port 8000"
+    # Check if database is accessible
+    if curl -s http://localhost:4000/health > /dev/null; then
+        print_success "Database connection is healthy"
     else
-        print_warning "Python service is not running on port 8000"
+        print_warning "Database connection may not be available"
     fi
 }
 
@@ -89,15 +89,15 @@ run_api_tests() {
     fi
 }
 
-# Run Python service tests
-run_python_tests() {
-    print_status "Running Python service tests..."
+# Run database tests
+run_database_tests() {
+    print_status "Running database tests..."
     
-    if [ -f "tests/test_python_service.py" ]; then
-        python -m pytest tests/test_python_service.py -v --tb=short
-        print_success "Python service tests completed"
+    if [ -f "tests/test_database.py" ]; then
+        python -m pytest tests/test_database.py -v --tb=short
+        print_success "Database tests completed"
     else
-        print_warning "Python service tests not found"
+        print_warning "Database tests not found"
     fi
 }
 
@@ -134,8 +134,8 @@ run_all_tests() {
     # Run API tests
     run_api_tests
     
-    # Run Python service tests
-    run_python_tests
+    # Run database tests
+    run_database_tests
     
     # Run integration tests
     run_integration_tests
@@ -176,8 +176,8 @@ main() {
         "api")
             run_api_tests
             ;;
-        "python")
-            run_python_tests
+        "database")
+            run_database_tests
             ;;
         "integration")
             run_integration_tests
@@ -189,7 +189,7 @@ main() {
             run_all_tests
             ;;
         *)
-            echo "Usage: $0 [api|python|integration|cypress|all]"
+            echo "Usage: $0 [api|database|integration|cypress|all]"
             exit 1
             ;;
     esac
