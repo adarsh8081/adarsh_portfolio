@@ -7,11 +7,6 @@
   "env": {
     "NEXT_PUBLIC_API_URL": "@api_url"
   },
-  "functions": {
-    "src/app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
