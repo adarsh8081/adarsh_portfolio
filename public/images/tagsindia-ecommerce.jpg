@@ -1,0 +1,70 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f0f9ff;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Floating code elements -->
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="20" height="20" fill="#ffffff" opacity="0.3"/>
+    <rect x="5" y="5" width="10" height="10" fill="#3b82f6" opacity="0.5"/>
+  </g>
+  <g transform="translate(650, 120)">
+    <rect x="0" y="0" width="15" height="15" fill="#ffffff" opacity="0.2"/>
+    <rect x="3" y="3" width="9" height="9" fill="#1d4ed8" opacity="0.4"/>
+  </g>
+  
+  <!-- Main card -->
+  <rect x="100" y="150" width="600" height="200" rx="20" fill="url(#card)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Web development elements -->
+  <g transform="translate(200, 200)">
+    <!-- Browser window -->
+    <rect x="0" y="0" width="120" height="80" rx="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="0" y="0" width="120" height="20" rx="5" fill="#e9ecef"/>
+    <circle cx="8" cy="10" r="3" fill="#dc3545"/>
+    <circle cx="20" cy="10" r="3" fill="#ffc107"/>
+    <circle cx="32" cy="10" r="3" fill="#28a745"/>
+    <rect x="40" y="5" width="60" height="10" rx="2" fill="#6c757d"/>
+    
+    <!-- Content area -->
+    <rect x="5" y="25" width="110" height="50" fill="#ffffff"/>
+    <rect x="10" y="30" width="80" height="8" rx="2" fill="#3b82f6" opacity="0.8"/>
+    <rect x="10" y="45" width="60" height="6" rx="1" fill="#6c757d" opacity="0.6"/>
+    <rect x="10" y="55" width="70" height="6" rx="1" fill="#6c757d" opacity="0.6"/>
+    <rect x="10" y="65" width="50" height="6" rx="1" fill="#6c757d" opacity="0.6"/>
+  </g>
+  
+  <!-- Code editor -->
+  <g transform="translate(400, 180)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="#1e1e1e" stroke="#333333" stroke-width="1"/>
+    
+    <!-- Code lines -->
+    <text x="10" y="20" font-family="monospace" font-size="10" fill="#569cd6">&lt;div className="container"&gt;</text>
+    <text x="10" y="35" font-family="monospace" font-size="10" fill="#d4d4d4">  &lt;h1&gt;Hello World&lt;/h1&gt;</text>
+    <text x="10" y="50" font-family="monospace" font-size="10" fill="#ce9178">  &lt;p&gt;Welcome to my site&lt;/p&gt;</text>
+    <text x="10" y="65" font-family="monospace" font-size="10" fill="#569cd6">&lt;/div&gt;</text>
+    <text x="10" y="80" font-family="monospace" font-size="10" fill="#6a9955">// React component</text>
+    <text x="10" y="95" font-family="monospace" font-size="10" fill="#6a9955">// Next.js framework</text>
+    <text x="10" y="110" font-family="monospace" font-size="10" fill="#6a9955">// TypeScript</text>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Web Development</text>
+  <text x="400" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#64748b">Modern full-stack solutions</text>
+  
+  <!-- Decorative elements -->
+  <rect x="120" y="170" width="4" height="30" fill="#3b82f6" opacity="0.6"/>
+  <rect x="120" y="170" width="30" height="4" fill="#3b82f6" opacity="0.6"/>
+  <rect x="650" y="170" width="4" height="30" fill="#1d4ed8" opacity="0.6"/>
+  <rect x="636" y="170" width="30" height="4" fill="#1d4ed8" opacity="0.6"/>
+</svg>

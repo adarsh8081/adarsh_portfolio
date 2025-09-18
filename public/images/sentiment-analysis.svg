@@ -1,0 +1,51 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sentimentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#sentimentGradient)"/>
+  
+  <!-- Social Media Icons -->
+  <circle cx="80" cy="80" r="25" fill="white" opacity="0.9"/>
+  <text x="80" y="88" text-anchor="middle" fill="#e74c3c" font-size="20" font-family="Arial">f</text>
+  
+  <circle cx="150" cy="80" r="25" fill="white" opacity="0.9"/>
+  <text x="150" y="88" text-anchor="middle" fill="#1da1f2" font-size="20" font-family="Arial">t</text>
+  
+  <circle cx="220" cy="80" r="25" fill="white" opacity="0.9"/>
+  <text x="220" y="88" text-anchor="middle" fill="#0077b5" font-size="20" font-family="Arial">in</text>
+  
+  <circle cx="290" cy="80" r="25" fill="white" opacity="0.9"/>
+  <text x="290" y="88" text-anchor="middle" fill="#e4405f" font-size="20" font-family="Arial">ig</text>
+  
+  <!-- Sentiment Analysis Processing -->
+  <rect x="50" y="130" width="300" height="80" fill="white" opacity="0.9" rx="10"/>
+  <text x="200" y="150" text-anchor="middle" fill="#2c3e50" font-size="16" font-family="Arial" font-weight="bold">Real-time Sentiment Analysis</text>
+  
+  <!-- Sentiment Bars -->
+  <rect x="70" y="170" width="80" height="20" fill="#e74c3c" opacity="0.8" rx="10"/>
+  <text x="110" y="185" text-anchor="middle" fill="white" font-size="12" font-family="Arial" font-weight="bold">Negative</text>
+  
+  <rect x="170" y="170" width="60" height="20" fill="#f39c12" opacity="0.8" rx="10"/>
+  <text x="200" y="185" text-anchor="middle" fill="white" font-size="12" font-family="Arial" font-weight="bold">Neutral</text>
+  
+  <rect x="250" y="170" width="100" height="20" fill="#27ae60" opacity="0.8" rx="10"/>
+  <text x="300" y="185" text-anchor="middle" fill="white" font-size="12" font-family="Arial" font-weight="bold">Positive</text>
+  
+  <!-- Processing Speed -->
+  <rect x="70" y="200" width="260" height="30" fill="#ecf0f1" rx="15"/>
+  <text x="200" y="220" text-anchor="middle" fill="#2c3e50" font-size="12" font-family="Arial">Processing: 1000+ texts per minute</text>
+  
+  <!-- AI Processing Icon -->
+  <circle cx="350" cy="50" r="20" fill="white" opacity="0.9"/>
+  <path d="M340 50 L350 40 L360 50 L350 60 Z" fill="#e74c3c"/>
+  <circle cx="350" cy="50" r="5" fill="white"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-size="20" font-family="Arial" font-weight="bold">NLP Sentiment Analysis</text>
+</svg>

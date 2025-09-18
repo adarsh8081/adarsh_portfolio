@@ -1,0 +1,73 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#fff8f0;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Floating elements -->
+  <circle cx="150" cy="100" r="30" fill="#ffffff" opacity="0.2"/>
+  <circle cx="650" cy="150" r="25" fill="#ffffff" opacity="0.3"/>
+  <circle cx="700" cy="400" r="20" fill="#ffffff" opacity="0.25"/>
+  
+  <!-- Main card -->
+  <rect x="100" y="150" width="600" height="200" rx="20" fill="url(#card)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Sentiment analysis visualization -->
+  <g transform="translate(200, 200)">
+    <!-- Positive sentiment -->
+    <g transform="translate(0, 0)">
+      <circle cx="20" cy="20" r="15" fill="#27ae60" opacity="0.8"/>
+      <path d="M12 20 L18 26 L28 14" stroke="#ffffff" stroke-width="3" fill="none"/>
+    </g>
+    
+    <!-- Neutral sentiment -->
+    <g transform="translate(50, 0)">
+      <circle cx="20" cy="20" r="15" fill="#95a5a6" opacity="0.8"/>
+      <line x1="12" y1="20" x2="28" y2="20" stroke="#ffffff" stroke-width="3"/>
+    </g>
+    
+    <!-- Negative sentiment -->
+    <g transform="translate(100, 0)">
+      <circle cx="20" cy="20" r="15" fill="#e74c3c" opacity="0.8"/>
+      <path d="M12 12 L28 28 M28 12 L12 28" stroke="#ffffff" stroke-width="3" fill="none"/>
+    </g>
+  </g>
+  
+  <!-- Text analysis examples -->
+  <g transform="translate(400, 180)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+    
+    <!-- Positive text -->
+    <rect x="10" y="10" width="180" height="20" rx="3" fill="#d5f4e6"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60">"I love this product!"</text>
+    
+    <!-- Neutral text -->
+    <rect x="10" y="40" width="180" height="20" rx="3" fill="#ecf0f1"/>
+    <text x="100" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d">"The product is okay."</text>
+    
+    <!-- Negative text -->
+    <rect x="10" y="70" width="180" height="20" rx="3" fill="#fadbd8"/>
+    <text x="100" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c">"This is terrible!"</text>
+    
+    <text x="100" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666666">Real-time Sentiment Detection</text>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">NLP Sentiment Analysis</text>
+  <text x="400" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#7f8c8d">Real-time emotion detection</text>
+  
+  <!-- Decorative elements -->
+  <rect x="120" y="170" width="4" height="30" fill="#f39c12" opacity="0.6"/>
+  <rect x="120" y="170" width="30" height="4" fill="#f39c12" opacity="0.6"/>
+  <rect x="650" y="170" width="4" height="30" fill="#e67e22" opacity="0.6"/>
+  <rect x="636" y="170" width="30" height="4" fill="#e67e22" opacity="0.6"/>
+</svg>

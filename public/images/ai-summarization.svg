@@ -1,0 +1,44 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#aiGradient)"/>
+  
+  <!-- Chrome Extension Icon -->
+  <rect x="50" y="50" width="60" height="40" rx="5" fill="white" opacity="0.9"/>
+  <rect x="55" y="55" width="50" height="30" fill="#4285f4"/>
+  <circle cx="80" cy="70" r="8" fill="white"/>
+  <rect x="70" y="75" width="20" height="5" fill="white"/>
+  
+  <!-- Document Icons -->
+  <rect x="150" y="60" width="30" height="40" fill="white" opacity="0.8"/>
+  <rect x="155" y="65" width="20" height="25" fill="#ff6b6b"/>
+  <text x="165" y="85" text-anchor="middle" fill="white" font-size="12" font-family="Arial">PDF</text>
+  
+  <rect x="200" y="60" width="30" height="40" fill="white" opacity="0.8"/>
+  <rect x="205" y="65" width="20" height="25" fill="#4ecdc4"/>
+  <text x="215" y="85" text-anchor="middle" fill="white" font-size="12" font-family="Arial">VID</text>
+  
+  <rect x="250" y="60" width="30" height="40" fill="white" opacity="0.8"/>
+  <rect x="255" y="65" width="20" height="25" fill="#45b7d1"/>
+  <text x="265" y="85" text-anchor="middle" fill="white" font-size="12" font-family="Arial">IMG</text>
+  
+  <!-- AI Processing Icon -->
+  <circle cx="320" cy="80" r="25" fill="white" opacity="0.9"/>
+  <path d="M310 80 L320 70 L330 80 L320 90 Z" fill="#667eea"/>
+  <circle cx="320" cy="80" r="8" fill="#764ba2"/>
+  
+  <!-- Summary Output -->
+  <rect x="50" y="130" width="300" height="80" fill="white" opacity="0.9" rx="10"/>
+  <text x="200" y="150" text-anchor="middle" fill="#333" font-size="16" font-family="Arial" font-weight="bold">AI Summary</text>
+  <text x="200" y="170" text-anchor="middle" fill="#666" font-size="12" font-family="Arial">Document processed with 95% accuracy</text>
+  <text x="200" y="190" text-anchor="middle" fill="#666" font-size="12" font-family="Arial">Multi-format support: PDF, Video, Image, Text</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-size="20" font-family="Arial" font-weight="bold">AI Summarization System</text>
+</svg>
