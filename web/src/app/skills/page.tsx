@@ -118,56 +118,7 @@ function SkillSphere() {
 	);
 }
 
-function RadialProgress({ skill, index }: { skill: { name: string; level: number; color: string; icon: string }; index: number }) {
-	const circumference = 2 * Math.PI * 45;
-	const strokeDasharray = circumference;
-	const strokeDashoffset = circumference - (skill.level / 100) * circumference;
-
-	return (
-		<motion.div
-			className="relative w-32 h-32 flex items-center justify-center"
-			initial={{ opacity: 0, scale: 0.8 }}
-			whileInView={{ opacity: 1, scale: 1 }}
-			transition={{ duration: 0.6, delay: index * 0.1 }}
-			viewport={{ once: true }}
-		>
-			<svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-				<circle
-					cx="50"
-					cy="50"
-					r="45"
-					stroke="currentColor"
-					strokeWidth="8"
-					fill="none"
-					className="text-muted/20"
-				/>
-				<motion.circle
-					cx="50"
-					cy="50"
-					r="45"
-					stroke={skill.color}
-					strokeWidth="8"
-					fill="none"
-					strokeLinecap="round"
-					strokeDasharray={strokeDasharray}
-					initial={{ strokeDashoffset: circumference }}
-					whileInView={{ strokeDashoffset }}
-					transition={{ duration: 1.5, delay: index * 0.1 }}
-					viewport={{ once: true }}
-				/>
-			</svg>
-			<div className="absolute inset-0 flex flex-col items-center justify-center">
-				<div className="text-2xl mb-1">{skill.icon}</div>
-				<span className="text-lg font-bold" style={{ color: skill.color }}>
-					{skill.level}%
-				</span>
-				<span className="text-xs text-muted-foreground text-center px-2">
-					{skill.name}
-				</span>
-			</div>
-		</motion.div>
-	);
-}
+// Removed unused RadialProgress component - replaced with card-based design
 
 export default function SkillsPage() {
 	return (
