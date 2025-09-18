@@ -10,7 +10,7 @@ const experienceData = [
 		title: "IBM ICE Day & Brij Literature Festival — Coordinator",
 		company: "GLA University",
 		period: "2024 - Present",
-		location: "Mathura, India",
+		location: "Delhi, India",
 		description: "Leading technical and cultural fest coordination with focus on innovation and community engagement.",
 		achievements: [
 			"Managed technical and cultural fest events, coordinating logistics and technical workflows",
@@ -23,7 +23,24 @@ const experienceData = [
 		type: "Leadership"
 	},
 	{
-		title: "Mindware — Intern",
+		title: "AI/ML Engineer & Full-Stack Developer",
+		company: "Freelance & Personal Projects",
+		period: "2023 - Present",
+		location: "Delhi, India",
+		description: "Developing cutting-edge AI solutions and full-stack applications for diverse clients and personal projects.",
+		achievements: [
+			"Built AI-powered summarization system processing 10,000+ documents with 95% accuracy",
+			"Developed complete Spotify clone with real-time sync and advanced music features",
+			"Created CNN-based image classifier achieving 92% accuracy on custom datasets",
+			"Implemented LSTM energy prediction model with 15% improvement over baseline",
+			"Designed and deployed 3D interactive portfolio with 60fps performance"
+		],
+		tech: ["Python", "TensorFlow", "PyTorch", "React", "Next.js", "Node.js", "AWS", "Docker"],
+		icon: "🤖",
+		type: "AI/ML Development"
+	},
+	{
+		title: "Mindware — Software Development Intern",
 		company: "Mindware Technologies",
 		period: "2024",
 		location: "Remote",

@@ -110,3 +110,4 @@ prisma/migrations/
 
 # Python directory (separate project)
 python/
+.vercel

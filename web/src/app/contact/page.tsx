@@ -26,7 +26,7 @@ const contactInfo = [
 	{
 		icon: MapPin,
 		title: "Location",
-		value: "Mathura, India",
+		value: "Delhi, India",
 		href: "#",
 		description: "Available for remote work"
 	}
@@ -102,16 +102,31 @@ export default function ContactPage() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsSubmitting(true);
+		setSubmitStatus("idle");
 		
-		// Simulate form submission
-		await new Promise(resolve => setTimeout(resolve, 2000));
-		
-		setIsSubmitting(false);
-		setSubmitStatus("success");
-		setFormData({ name: "", email: "", subject: "", message: "" });
-		
-		// Reset success message after 3 seconds
-		setTimeout(() => setSubmitStatus("idle"), 3000);
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			});
+
+			if (response.ok) {
+				setSubmitStatus("success");
+				setFormData({ name: "", email: "", subject: "", message: "" });
+			} else {
+				setSubmitStatus("error");
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error);
+			setSubmitStatus("error");
+		} finally {
+			setIsSubmitting(false);
+			// Reset status after 5 seconds
+			setTimeout(() => setSubmitStatus("idle"), 5000);
+		}
 	};
 
 	return (
@@ -269,7 +284,7 @@ export default function ContactPage() {
 											className="flex items-center gap-2 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
 										>
 											<CheckCircle className="w-5 h-5 text-green-600" />
-											<span className="text-green-700 dark:text-green-300">Message sent successfully! I&apos;ll get back to you soon.</span>
+											<span className="text-green-700 dark:text-green-300">Message sent successfully! I&apos;ll get back to you soon at adarsh.kumar.808168@gmail.com</span>
 										</motion.div>
 									)}
 									
@@ -280,7 +295,7 @@ export default function ContactPage() {
 											className="flex items-center gap-2 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
 										>
 											<AlertCircle className="w-5 h-5 text-red-600" />
-											<span className="text-red-700 dark:text-red-300">Something went wrong. Please try again.</span>
+											<span className="text-red-700 dark:text-red-300">Failed to send message. Please try again or contact me directly at adarsh.kumar.808168@gmail.com</span>
 										</motion.div>
 									)}
 								</form>

@@ -10,7 +10,7 @@ const educationData = [
 		title: "B.Tech in Computer Science (AI & ML)",
 		institution: "GLA University",
 		period: "2021 - 2025",
-		location: "Mathura, India",
+		location: "Delhi, India",
 		description: "Specialized program focusing on artificial intelligence, machine learning, and advanced computer science concepts.",
 		highlights: [
 			"CGPA: 8.5/10",

@@ -220,28 +220,59 @@ export default function SkillsPage() {
 				</RevealOnScroll>
 			</ScrollytellingSection>
 
-			{/* Skills Categories */}
+			{/* Skills Categories - New Design */}
 			{skillCategories.map((category, categoryIndex) => (
 				<ScrollytellingSection 
 					key={category.name} 
 					className={`py-16 ${categoryIndex % 2 === 0 ? 'bg-gradient-to-br from-accent-50/50 to-transparent dark:from-accent-900/20' : ''}`}
 				>
 					<RevealOnScroll>
-						<div className="max-w-6xl mx-auto">
+						<div className="max-w-7xl mx-auto">
 							<h3 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--accent-600),var(--accent-400))]">
 								{category.name}
 							</h3>
-							<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+							
+							{/* New Card-based Layout */}
+							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 								{category.skills.map((skill, skillIndex) => (
 									<motion.div
 										key={skill.name}
-										className="flex flex-col items-center"
+										className="group glass rounded-2xl p-6 border border-white/20 dark:border-white/10 hover:border-accent-500/30 transition-all duration-300 hover:scale-105 hover:shadow-xl"
 										initial={{ opacity: 0, y: 20 }}
 										whileInView={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.6, delay: skillIndex * 0.1 }}
 										viewport={{ once: true }}
 									>
-										<RadialProgress skill={skill} index={skillIndex} />
+										{/* Skill Header */}
+										<div className="flex items-center gap-4 mb-4">
+											<div className="text-3xl">{skill.icon}</div>
+											<div className="flex-1">
+												<h4 className="text-lg font-semibold">{skill.name}</h4>
+												<div className="flex items-center gap-2">
+													<div className="flex-1 bg-muted/20 rounded-full h-2">
+														<motion.div
+															className="h-2 rounded-full"
+															style={{ backgroundColor: skill.color }}
+															initial={{ width: 0 }}
+															whileInView={{ width: `${skill.level}%` }}
+															transition={{ duration: 1.5, delay: skillIndex * 0.1 }}
+															viewport={{ once: true }}
+														/>
+													</div>
+													<span className="text-sm font-bold" style={{ color: skill.color }}>
+														{skill.level}%
+													</span>
+												</div>
+											</div>
+										</div>
+										
+										{/* Skill Description */}
+										<div className="text-sm text-muted-foreground">
+											{skill.level >= 90 && "Expert level proficiency"}
+											{skill.level >= 80 && skill.level < 90 && "Advanced proficiency"}
+											{skill.level >= 70 && skill.level < 80 && "Intermediate proficiency"}
+											{skill.level < 70 && "Learning and growing"}
+										</div>
 									</motion.div>
 								))}
 							</div>
