@@ -1,15 +1,12 @@
-# Ignore server directory and other non-web files
+# Ignore everything except the web folder for Vercel deployment
 server/
-python/
 tests/
+db/
 *.md
-.env.example
-start-dev.ps1
-deploy*.sh
-deploy*.ps1
-docker-compose.yml
+*.ps1
+*.sh
 Dockerfile
-.dockerignore
-
-# Keep only web directory for frontend deployment
-!/web
+docker-compose.yml
+env.example
+pyproject.toml
+requirements.txt
