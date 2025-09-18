@@ -148,10 +148,6 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 					className="object-cover transition-transform duration-500 group-hover:scale-105"
 					priority={project.featured}
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-					onError={(e) => {
-						console.error('Image failed to load:', project.image);
-						e.currentTarget.style.display = 'none';
-					}}
 				/>
 				{project.featured && (
 					<div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full bg-accent-500 text-white text-xs font-medium">
