@@ -2,6 +2,9 @@
 
 A comprehensive, modern portfolio website built with Next.js, Node.js, Python FastAPI, and AI-powered chatbot functionality.
 
+## 🚀 Vercel Deployment
+This project is configured for Vercel deployment with the Next.js app in the `web` folder.
+
 ## 📋 Table of Contents
 
 - [Features](#features)
