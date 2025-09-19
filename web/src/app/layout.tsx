@@ -14,6 +14,8 @@ import { CustomCursor } from "@/components/magnetic-cursor";
 import { SWRProvider } from "@/components/swr-provider";
 import { PerformanceMonitor } from "@/components/performance-monitor";
 import { MobileScrollFix } from "@/components/mobile-scroll-fix";
+import { ScrollProgressBar } from "@/components/scroll-progress-bar";
+import { MobileScrollHint } from "@/components/mobile-scroll-hint";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -77,6 +79,8 @@ export default function RootLayout({
                   <Footer />
                   <CustomCursor />
                   <MobileScrollFix />
+                  <ScrollProgressBar />
+                  <MobileScrollHint />
                   <PerformanceMonitor />
                   <Analytics />
                   <SpeedInsights />
