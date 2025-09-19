@@ -39,8 +39,18 @@
 	/* Ensure proper touch scrolling */
 	html, body {
 		-webkit-overflow-scrolling: touch;
-		
 		overflow-scrolling: touch;
+		overflow-x: hidden;
+		overflow-y: auto;
+		height: 100%;
+		position: relative;
+	}
+	
+	/* Ensure body can scroll on mobile */
+	body {
+		overflow: auto !important;
+		height: auto !important;
+		min-height: 100vh;
 	}
 	
 	/* Prevent touch callouts */
@@ -371,6 +381,13 @@ html.lenis, html.lenis body {
 }
 html.lenis body {
 	overflow: hidden;
+}
+/* Mobile devices - always allow scrolling */
+@media (hover: none) and (pointer: coarse) {
+	html.lenis body {
+		overflow: auto !important;
+		height: auto !important;
+	}
 }
 /* Optional: reduce motion users keep native scroll */
 @media (prefers-reduced-motion: reduce) {

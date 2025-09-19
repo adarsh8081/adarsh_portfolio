@@ -13,6 +13,7 @@ import { Auth0Provider } from '@/components/auth0-provider';
 import { CustomCursor } from "@/components/magnetic-cursor";
 import { SWRProvider } from "@/components/swr-provider";
 import { PerformanceMonitor } from "@/components/performance-monitor";
+import { MobileScrollFix } from "@/components/mobile-scroll-fix";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -75,6 +76,7 @@ export default function RootLayout({
                   {children}
                   <Footer />
                   <CustomCursor />
+                  <MobileScrollFix />
                   <PerformanceMonitor />
                   <Analytics />
                   <SpeedInsights />

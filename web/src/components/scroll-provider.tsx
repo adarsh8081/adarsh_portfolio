@@ -10,8 +10,11 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
 		// Check if user prefers reduced motion
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		
-		if (prefersReducedMotion) {
-			return; // Skip smooth scrolling for users who prefer reduced motion
+		// Check if device is mobile/touch
+		const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+		
+		if (prefersReducedMotion || isMobile) {
+			return; // Skip smooth scrolling for users who prefer reduced motion or mobile devices
 		}
 
 		lenisRef.current = new Lenis({
