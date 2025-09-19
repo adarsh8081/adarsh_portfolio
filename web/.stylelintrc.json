@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "apply",
+          "theme",
+          "screen",
+          "layer",
+          "tailwind",
+          "variants",
+          "responsive",
+          "media"
+        ]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "overflow-scrolling",
+          "line-clamp"
+        ]
+      }
+    ],
+    "vendor-prefix": "never"
+  }
+}

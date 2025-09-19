@@ -39,6 +39,7 @@
 	/* Ensure proper touch scrolling */
 	html, body {
 		-webkit-overflow-scrolling: touch;
+		
 		overflow-scrolling: touch;
 	}
 	
@@ -64,74 +65,91 @@
 
 /* Mobile-first responsive text */
 .responsive-text-xs {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-xs sm:text-sm;
 }
 
 .responsive-text-sm {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-sm sm:text-base;
 }
 
 .responsive-text-base {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-base sm:text-lg;
 }
 
 .responsive-text-lg {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-lg sm:text-xl;
 }
 
 .responsive-text-xl {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-xl sm:text-2xl;
 }
 
 .responsive-text-2xl {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-2xl sm:text-3xl lg:text-4xl;
 }
 
 .responsive-text-3xl {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-3xl sm:text-4xl lg:text-5xl;
 }
 
 .responsive-text-4xl {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-4xl sm:text-5xl lg:text-6xl;
 }
 
 .responsive-text-5xl {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply text-5xl sm:text-6xl lg:text-7xl;
 }
 
 /* Responsive spacing */
 .responsive-padding {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply p-4 sm:p-6 lg:p-8;
 }
 
 .responsive-margin {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply m-4 sm:m-6 lg:m-8;
 }
 
 /* Responsive grid utilities */
 .responsive-grid-1 {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply grid grid-cols-1;
 }
 
 .responsive-grid-2 {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply grid grid-cols-1 sm:grid-cols-2;
 }
 
 .responsive-grid-3 {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
 }
 
 .responsive-grid-4 {
+	/* stylelint-disable-next-line at-rule-no-unknown */
 	@apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
 }
 
 /* Mobile navigation improvements */
 @media (max-width: 768px) {
 	.mobile-nav {
+		/* stylelint-disable-next-line at-rule-no-unknown */
 		@apply fixed inset-0 z-50 bg-background/95 backdrop-blur-sm;
 	}
 	
 	.mobile-nav-hidden {
+		/* stylelint-disable-next-line at-rule-no-unknown */
 		@apply hidden;
 	}
 }
@@ -164,6 +182,7 @@
 	--gradient-4: linear-gradient(45deg, var(--brand-accent), var(--brand-light));
 }
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -300,6 +319,8 @@ body {
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	
+	line-clamp: 2;
 }
 
 /* Enhanced text contrast utilities */
@@ -441,27 +462,44 @@ body {
 	background: var(--brand-dark);
 }
 
-/* Custom cursor styles */
-* {
-	cursor: none !important;
+/* Custom cursor styles - only apply on desktop devices */
+@media (hover: hover) and (pointer: fine) {
+	* {
+		cursor: none !important;
+	}
+
+	/* Cursor hover states for better detection */
+	.cursor-text {
+		cursor: none !important;
+	}
+
+	.cursor-interactive {
+		cursor: none !important;
+	}
+
+	.cursor-clickable {
+		cursor: none !important;
+	}
+
+	/* Ensure all interactive elements are properly detected */
+	button, a, [role="button"], [tabindex], input, select, textarea {
+		cursor: none !important;
+	}
 }
 
-/* Cursor hover states for better detection */
-.cursor-text {
-	cursor: none !important;
-}
-
-.cursor-interactive {
-	cursor: none !important;
-}
-
-.cursor-clickable {
-	cursor: none !important;
-}
-
-/* Ensure all interactive elements are properly detected */
-button, a, [role="button"], [tabindex], input, select, textarea {
-	cursor: none !important;
+/* Mobile devices - ensure normal cursor behavior */
+@media (hover: none) and (pointer: coarse) {
+	* {
+		cursor: auto !important;
+	}
+	
+	button, a, [role="button"], [tabindex], input, select, textarea {
+		cursor: pointer !important;
+	}
+	
+	input, select, textarea {
+		cursor: text !important;
+	}
 }
 
 /* Smooth cursor transitions */
@@ -496,6 +534,14 @@ button, a, [role="button"], [tabindex], input, select, textarea {
 @media (prefers-reduced-motion: reduce) {
 	* {
 		cursor: auto !important;
+	}
+	
+	button, a, [role="button"], [tabindex], input, select, textarea {
+		cursor: pointer !important;
+	}
+	
+	input, select, textarea {
+		cursor: text !important;
 	}
 }
 

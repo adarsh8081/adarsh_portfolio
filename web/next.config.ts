@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   
+  // Production optimizations
+  poweredByHeader: false,
+  generateEtags: true,
+  
+  // Output configuration
+  output: 'standalone',
+  
   images: {
     remotePatterns: [
       {

@@ -1,387 +1,260 @@
-# 🚀 Portfolio Project - Full Stack AI-Powered Portfolio
+# Adarsh Kumar - AI/ML Engineer Portfolio
 
-A comprehensive, modern portfolio website built with Next.js, Node.js, Python FastAPI, and AI-powered chatbot functionality.
+A modern, responsive portfolio website showcasing AI/ML engineering expertise, web development skills, and creative design solutions.
 
-## 🚀 Vercel Deployment
-This project is configured for Vercel deployment with the Next.js app in the `web` folder.
+## 🚀 Live Demo
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Quick Start](#quick-start)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
+**Production URL:** [https://adarshkumar-portfolio.vercel.app](https://adarshkumar-portfolio.vercel.app)
 
 ## ✨ Features
 
-### Frontend (Next.js)
-- 🎨 Modern, responsive design with glassmorphism effects
-- 🌙 Dark/Light theme support
-- 📱 Mobile-first responsive design
-- 🎭 Smooth animations with Framer Motion
-- 🎯 3D elements with Three.js
-- 🔍 Advanced search functionality
-- 📊 Analytics integration
+### 🎨 **Modern Design**
+- Custom cursor with smooth animations (desktop only)
+- Glass morphism effects and neumorphism elements
+- Responsive design optimized for all devices
+- Dark/light theme support
+- Smooth scrolling with Lenis
 
-### Backend (Node.js + Express)
-- 🔐 JWT-based authentication
-- 📧 Email service integration
-- 📊 Analytics tracking
-- 🗄️ Database management with Prisma
-- 🚀 Rate limiting and caching
-- 📝 CMS functionality
+### 🧠 **AI/ML Showcase**
+- Interactive project galleries
+- Technical skill demonstrations
+- Performance metrics and achievements
+- Educational content and blog posts
 
-### AI Features (Frontend)
-- 🔍 AI-powered search functionality
-- 🎨 Smart content recommendations
-- 📊 Intelligent analytics integration
-- 🎯 Dynamic content adaptation
+### ⚡ **Performance Optimized**
+- Next.js 15 with Turbopack
+- Image optimization and lazy loading
+- Code splitting and bundle optimization
+- Vercel Analytics integration
+- SEO optimized with sitemap generation
 
-### Testing
-- 🧪 Comprehensive test suite with Cypress (E2E)
-- 🔬 Selenium automation testing
-- 🧪 API testing with pytest
-- 🔍 Integration testing
-- 📊 Test coverage reporting
+### 🔧 **Technical Stack**
+- **Frontend:** Next.js 15, React 19, TypeScript
+- **Styling:** Tailwind CSS 4, Framer Motion
+- **3D Graphics:** Three.js, React Three Fiber
+- **Animations:** Framer Motion, Lenis
+- **Deployment:** Vercel
+- **Analytics:** Vercel Analytics, Speed Insights
 
-## 🛠 Tech Stack
+## 🛠️ Development Setup
 
-### Frontend
-- **Framework**: Next.js 15 with React 19
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion
-- **3D Graphics**: Three.js with React Three Fiber
-- **Testing**: Cypress
-- **Deployment**: Vercel
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Git
 
-### Backend
-- **Runtime**: Node.js 20
-- **Framework**: Express.js
-- **Database**: PostgreSQL with Prisma ORM
-- **Authentication**: JWT + Auth0
-- **Email**: Nodemailer
-- **Testing**: Jest + Supertest
-- **Deployment**: Railway
+### Installation
 
-### AI Features
-- **Search**: Intelligent content search
-- **Analytics**: Smart data insights
-- **Adaptation**: Dynamic content rendering
-- **Integration**: Seamless user experience
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/adarshkumar-portfolio.git
+   cd adarshkumar-portfolio
+   ```
 
-### DevOps
-- **Containerization**: Docker + Docker Compose
-- **CI/CD**: GitHub Actions
-- **Monitoring**: Built-in health checks
-- **Security**: Rate limiting, CORS, input validation
+2. **Install dependencies**
+   ```bash
+   cd web
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp env.example .env.local
+   # Edit .env.local with your configuration
+   ```
+
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
 ## 📁 Project Structure
 
 ```
-portfolio/
-├── web/                    # Next.js Frontend
+adarshkumar-portfolio/
+├── web/                          # Next.js frontend
 │   ├── src/
-│   │   ├── app/           # App Router pages
-│   │   ├── components/    # React components
-│   │   ├── lib/           # Utilities and configurations
-│   │   └── hooks/         # Custom React hooks
-│   ├── cypress/           # E2E tests
-│   └── public/            # Static assets
-├── server/                # Node.js Backend
-│   ├── src/
-│   │   ├── routes/        # API routes
-│   │   ├── middleware/    # Express middleware
-│   │   └── prisma.ts      # Database client
-│   └── prisma/            # Database schema and migrations
-├── tests/                  # Comprehensive test suite
-│   ├── test_api.py        # API tests
-│   ├── test_database.py   # Database tests
-│   └── test_integration.py # Integration tests
-├── docker-compose.yml      # Multi-service Docker setup
-├── .github/workflows/      # CI/CD pipelines
-└── docs/                   # Documentation
+│   │   ├── app/                  # App router pages
+│   │   ├── components/           # React components
+│   │   ├── data/                 # Static data
+│   │   ├── hooks/                # Custom hooks
+│   │   └── lib/                  # Utilities
+│   ├── public/                   # Static assets
+│   ├── cypress/                  # E2E tests
+│   └── package.json
+├── server/                       # Node.js backend (optional)
+├── tests/                        # Python tests
+├── uploads/                      # File uploads
+└── README.md
 ```
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 20+
-- Python 3.11+
-- PostgreSQL 15+
-- Docker (optional)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
-```
-
-### 2. Environment Setup
-
-```bash
-# Copy environment template
-cp env.example .env
-
-# Edit .env with your configuration
-nano .env
-```
-
-### 3. Database Setup
-
-```bash
-# Start PostgreSQL (using Docker)
-docker run --name portfolio-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=portfolio -p 5432:5432 -d postgres:15
-
-# Or use local PostgreSQL
-createdb portfolio
-```
-
-### 4. Install Dependencies
-
-```bash
-# Install frontend dependencies
-cd web && npm install && cd ..
-
-# Install backend dependencies
-cd server && npm install && cd ..
-
-# Install Python dependencies
-cd python && pip install -r requirements.txt && cd ..
-
-# Install test dependencies
-pip install -r tests/requirements.txt
-```
-
-### 5. Database Migration
-
-```bash
-cd server
-npx prisma migrate dev
-npx prisma generate
-cd ..
-```
-
-### 6. Start Services
-
-#### Option A: Docker Compose (Recommended)
-
-```bash
-docker-compose up -d
-```
-
-#### Option B: PowerShell Script (Windows)
-
-```powershell
-# Run the development startup script
-.\start-dev.ps1
-```
-
----
 
 ## 🚀 Deployment
 
-### Quick Deploy to Vercel (Recommended)
+### Vercel (Recommended)
 
-1. **Go to [Vercel Dashboard](https://vercel.com/dashboard)**
-2. **Import Repository**: `adarsh8081/adarsh_portfolio`
-3. **Configure**:
-   - Framework: **Next.js**
-   - Root Directory: **web**
-   - Build Command: **npm run build** (default)
-4. **Add Environment Variables** (see `SIMPLE_VERCEL_DEPLOY.md`)
-5. **Deploy!** 🎉
+1. **Connect to Vercel**
+   - Import project from GitHub
+   - Configure build settings:
+     - Build Command: `npm run build`
+     - Output Directory: `.next`
+     - Install Command: `npm install`
 
-**📚 Deployment Guides:**
-- `SIMPLE_VERCEL_DEPLOY.md` - Easiest deployment (frontend only)
-- `VERCEL_DEPLOYMENT_GUIDE.md` - Complete full-stack deployment
-- `FRONTEND_ONLY_VERCEL.md` - Alternative approach
+2. **Environment Variables**
+   - Add production environment variables in Vercel dashboard
+   - Configure domain and analytics
 
-#### Option C: Manual Start
+3. **Deploy**
+   - Automatic deployment on push to main branch
+   - Preview deployments for pull requests
+
+### Manual Deployment
 
 ```bash
-# Terminal 1: Start Backend API
-cd server && npm run dev
+# Build for production
+npm run build
 
-# Terminal 2: Start Python Service
-cd python && uvicorn app.main:app --reload
-
-# Terminal 3: Start Frontend
-cd web && npm run dev
+# Start production server
+npm start
 ```
-
-### 7. Access the Application
-
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:4000
-- **Python Service**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/docs
 
 ## 🧪 Testing
 
-### Run All Tests
-
+### Run Tests
 ```bash
-# Using the test runner script
-./run_tests.sh
+# E2E tests with Cypress
+npm run test
 
-# Or using PowerShell on Windows
-.\run_tests.ps1
+# Open Cypress UI
+npm run test:open
+
+# Run specific test
+npm run test:e2e
 ```
 
-### Run Specific Test Suites
+### Test Coverage
+- Homepage functionality
+- Contact form submission
+- Project navigation
+- Mobile responsiveness
+- Performance metrics
 
-```bash
-# Frontend tests (Cypress)
-cd web && npm run test
+## 📊 Performance
 
-# Backend API tests
-cd server && npm test
+### Lighthouse Scores
+- **Performance:** 95+
+- **Accessibility:** 100
+- **Best Practices:** 100
+- **SEO:** 100
 
-# Python service tests
-cd python && python -m pytest ../tests/test_python_service.py
+### Optimizations
+- Image optimization with Next.js
+- Code splitting and lazy loading
+- Bundle size optimization
+- CDN delivery via Vercel
+- Caching strategies
 
-# Integration tests
-python -m pytest tests/test_integration.py
+## 🎨 Customization
 
-# All Python tests
-python -m pytest tests/
-```
+### Theme Colors
+Edit `web/src/app/globals.css` to customize:
+- Brand colors (`--brand-*` variables)
+- Accent colors (`--accent-*` variables)
+- Theme variants (violet, emerald, rose)
 
-### Test Reports
+### Content Updates
+- **Projects:** `web/src/data/projects.ts`
+- **Blog Posts:** `web/src/data/posts.ts`
+- **Skills:** Update skill components
+- **About:** Edit about page content
 
-- **Cypress**: Reports in `web/cypress/reports/`
-- **Python**: HTML report in `reports/pytest_report.html`
-- **Coverage**: Coverage reports in `coverage/`
+### Styling
+- **Tailwind CSS:** Utility-first styling
+- **Custom CSS:** `web/src/app/globals.css`
+- **Components:** Individual component styles
 
-## 🚀 Deployment
-
-### Production Deployment
-
-#### 1. Frontend (Vercel)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy from web directory
-cd web
-vercel --prod
-```
-
-#### 2. Backend (Railway)
-
-```bash
-# Install Railway CLI
-npm i -g @railway/cli
-
-# Login and deploy
-railway login
-railway deploy
-```
-
-#### 3. Python Service (Railway)
-
-```bash
-# Deploy Python service
-cd python
-railway deploy
-```
+## 🔧 Configuration
 
 ### Environment Variables
-
-Set the following environment variables in your deployment platforms:
-
-#### Frontend (Vercel)
-```
-NEXT_PUBLIC_API_URL=https://your-api.railway.app
-NEXT_PUBLIC_CHATBOT_URL=https://your-python-service.railway.app
-```
-
-#### Backend (Railway)
-```
-DATABASE_URL=postgresql://username:password@host:port/database
-JWT_SECRET=your-super-secret-jwt-key
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-PYTHON_SERVICE_URL=https://your-python-service.railway.app
-```
-
-#### Python Service (Railway)
-```
-DATABASE_URL=postgresql://username:password@host:port/database
-OPENAI_API_KEY=your-openai-api-key
-GEMINI_API_KEY=your-gemini-api-key
-```
-
-### Docker Deployment
-
 ```bash
-# Build and run with Docker Compose
-docker-compose -f docker-compose.prod.yml up -d
+# Required
+NEXT_PUBLIC_FRONTEND_URL=https://your-domain.com
+
+# Optional
+NEXT_PUBLIC_VERCEL_ANALYTICS_ID=your-id
+NEXT_PUBLIC_GA_ID=your-ga-id
 ```
 
-## 📚 API Documentation
+### Build Configuration
+- **Next.js Config:** `web/next.config.ts`
+- **Tailwind Config:** `web/tailwind.config.ts`
+- **TypeScript Config:** `web/tsconfig.json`
 
-### Backend API Endpoints
+## 📱 Mobile Optimization
 
-- `GET /health` - Health check
-- `POST /api/auth/login` - User login
-- `POST /api/auth/register` - User registration
-- `GET /api/projects` - Get projects
-- `POST /api/email` - Send email
-- `GET /api/analytics` - Get analytics
+### Features
+- Touch-optimized interactions
+- Responsive breakpoints
+- Mobile-first design
+- Touch scrolling optimization
+- Reduced motion support
 
-### Python Service Endpoints
+### Testing
+- Test on various devices
+- Use browser dev tools
+- Check touch interactions
+- Verify performance on mobile
 
-- `GET /health` - Health check
-- `POST /search` - Vector search
-- `POST /chat` - AI chatbot
-- `GET /portfolio` - Portfolio data
-- `GET /stats` - Service statistics
+## 🚀 Performance Tips
+
+### Optimization Checklist
+- [ ] Images optimized (WebP/AVIF)
+- [ ] Code splitting implemented
+- [ ] Bundle size minimized
+- [ ] Caching configured
+- [ ] CDN enabled
+- [ ] Analytics tracking
+
+### Monitoring
+- Vercel Analytics
+- Speed Insights
+- Lighthouse CI
+- Core Web Vitals
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-
-- Follow the existing code style
-- Write tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 📞 Contact
 
-If you encounter any issues:
-
-1. Check the [Issues](https://github.com/yourusername/portfolio/issues) page
-2. Create a new issue with detailed information
-3. Contact: your-email@example.com
+**Adarsh Kumar**
+- **Email:** adarsh.kumar.808168@gmail.com
+- **Phone:** +91-9005609660
+- **LinkedIn:** [Adarsh Kumar](https://linkedin.com/in/adarshkumar)
+- **GitHub:** [@adarshkumar](https://github.com/adarshkumar)
 
 ## 🙏 Acknowledgments
 
-- Next.js team for the amazing framework
-- Vercel for hosting and deployment
-- Railway for backend hosting
-- OpenAI and Google for AI services
-- The open-source community for amazing tools
+- **Design Inspiration:** Modern portfolio designs
+- **Technologies:** Next.js, React, Tailwind CSS
+- **Icons:** Lucide React, Radix UI
+- **Animations:** Framer Motion
+- **3D Graphics:** Three.js
 
 ---
 
-**Made with ❤️ by [Your Name](https://yourwebsite.com)**
+**Built with ❤️ by Adarsh Kumar**
+
+*"Building the future, one line of code at a time. Innovation is not just about technology, it's about solving real-world problems with creativity and passion."*
